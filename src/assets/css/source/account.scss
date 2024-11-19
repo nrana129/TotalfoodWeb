@@ -1,0 +1,268 @@
+.account {
+  display: flex;
+  gap: 2.5rem;
+  margin: 50px 0;
+  h2{
+    font-size: 16px;
+    font-family: "Satoshi-Bold";
+    margin: 0;
+    display: block;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+  }
+  .right_section {
+    width: calc(100% - 290px);
+  }
+  .all_address {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    li {
+      border: 1px solid #e8e8e8;
+      padding: 18px;
+      border-radius: 13px;
+      .d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .name {
+          font-family: "Satoshi-Bold";
+          font-size: 13px;
+        }
+        .address_place {
+          span {
+            display: inline-block;
+            background: #f2f3ff;
+            border-radius: 26px;
+            color: #1d2b95;
+            font-family: "Satoshi-Bold";
+            padding: 5px 15px;
+            font-size: 12px;
+            text-transform: capitalize;
+          }
+        }
+      }
+      .address {
+        font-family: "Satoshi-Regular";
+        font-size: 13px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+      .mobile_no {
+        font-family: "Satoshi-Regular";
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+      .bottom_foot {
+        display: flex;
+        grid-gap: 20px;
+        div {
+          a {
+            color: #1d2b95;
+            text-transform: capitalize;
+            font-family: "Satoshi-Bold";
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+  .AvailableCoupon{
+    .right_section{
+        width: calc(100% - 290px);
+        ul {
+            max-width: 392px;
+            li {
+              border: 1px solid #dedede;
+              border-radius: 13px;
+              padding: 20px;
+              margin-bottom: 20px;
+              position: relative;
+              > p {
+                font-size: 13px;
+                font-family: "Satoshi-Medium";
+                color: #0d0d0d;
+                margin-bottom: 5px;
+              }
+              .avail_box {
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                color: #000;
+                span {
+                  font-size: 10px;
+                  font-family: "Satoshi-Medium";
+                  text-decoration: underline;
+                  letter-spacing: 0px;
+                  color: #212121;
+                  opacity: 0.5;
+                  cursor: pointer;
+                }
+                .tooltip-content {
+                  position: absolute;
+                  right: -244px;
+                  background: #333;
+                  padding: 12px 12px;
+                  color: #fff;
+                  font-size: 12px;
+                  width: max-content;
+                  border-radius: 6px;
+                  top: -7px;
+                  width: 200px;
+                  &::before {
+                    content: "";
+                    border: 9px solid transparent;
+                    z-index: 1001;
+                    top: 28%;
+                    border-left-width: 0;
+                    border-right-color: #333;
+                    left: -8px;
+                    position: absolute;
+                  }
+                }
+              }
+        
+              .d_flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                p {
+                  font-size: 11px;
+                  font-family: "Satoshi-Regular";
+                  letter-spacing: 0px;
+                  color: #0d0d0d;
+                  opacity: 1;
+                }
+              }
+              .code_btn {
+                margin-top: 18px;
+                a {
+                  font-family: "Satoshi-Bold";
+                  border: 0.800000011920929px dashed #1d2b95;
+                  border-radius: 8px;
+                  display: block;
+                  background: #eff1ff;
+                  padding: 0;
+                  text-align: center;
+                  color: #1d2b95;
+                  font-size: 12px;
+                  height: 35px;
+                  text-decoration: none;
+                  line-height: 35px;
+                  transition: 0.5s;
+                  cursor: pointer;
+                  &:hover {
+                    opacity: 0.7;
+                  }
+                }
+                .copynotification {
+                  display: none;
+                  background-color: #4caf50;
+                  cursor: pointer;
+                  color: white;
+                  padding: 10px;
+                  border-radius: 5px;
+                  text-align: center;
+                  font-weight: bold;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  margin-top: 10px;
+                }
+              }
+            }
+          }
+    }
+  }
+
+
+.customer_support {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+    grid-gap: 30px;
+    .logo {
+      width: 100%;
+      margin: 0;
+      img {
+        margin: 0 auto;
+      }
+    }
+    .title_customer_header {
+      width: 100%;
+      h3 {
+        color: #272727;
+        font-family: "Satoshi-Medium";
+        font-size: 16px;
+        margin: 0;
+      }
+      p {
+        color: #272727;
+        font-family: "Satoshi-Medium";
+        font-size: 12px;
+        margin: 0;
+        opacity: 0.6;
+        width: 260px;
+        margin: 12px auto 0 auto;
+      }
+    }
+    .customer_contact {
+      width: 358px;
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 20px;
+      .customer_details {
+        width: 100%;
+        a {
+          width: 100%;
+          background: #e4e6f6;
+          padding: 0;
+          border-radius: 10px;
+          font-family: "Satoshi-Medium";
+          font-size: 12px;
+          display: block;
+          text-decoration: none;
+          color: #000000;
+          border: 1px solid transparent;
+          transition: 0.5s;
+          box-sizing: border-box;
+          height: 46px;
+          line-height: 46px;
+          &:hover {
+            opacity: 0.7;
+            border: 1px solid #cdcdcd;
+          }
+          strong {
+            font-family: "Satoshi-Bold";
+          }
+        }
+        &.wht_no {
+          a {
+            background: #e9ffed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 5px;
+            &::before {
+              content: "";
+              background: url("../../images/account/whatsapp-logo.svg");
+              display: block;
+              width: 21px;
+              height: 21px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+  .refer_image img{
+    width: 38%;
+  }

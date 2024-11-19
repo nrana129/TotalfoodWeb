@@ -1,0 +1,94 @@
+.overview_section {
+  width: calc(100% - 290px);
+  display: flex;
+  grid-gap: 20px;
+  align-content: center;
+}
+.overview_inner{
+  width: calc(100% - 318px);
+  
+}
+.overview_section h2 {
+  font-size: 16px;
+  font-family: "Satoshi-Bold";
+  margin: 0;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.profile_section {
+  display: flex;
+  background: #f6f7ff;
+  display: flex;
+  grid-gap: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+.profile_section .left_section {
+  width: 90%;
+}
+.profile_first_name span {
+  background: #ded9f9;
+  display: inline-flex;
+  width: 54px;
+  height: 54px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: #6870aa;
+  border-radius: 50%;
+}
+.profile_section .left_section .profile {
+  display: flex;
+  grid-gap: 20px;
+}
+.profile_name h3 {
+  font-family: "Satoshi-Bold";
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 4px;
+  text-transform: capitalize;
+}
+.bottom_section{
+    margin-top: 20px;
+}
+
+.mail_id {
+  font-family: "Satoshi-Medium";
+  display: block;
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 4px;
+}
+.mobile_number {
+  font-family: "Satoshi-Medium";
+  display: block;
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.profile_section .right_section {
+  width: 10%;
+  text-align: right;
+}
+.profile_section .right_section a {
+  font-size: 13px;
+  font-family: "Satoshi-Bold";
+  text-transform: capitalize;
+  color: #1d2b95;
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 5px;
+  text-decoration: none;
+  &:after {
+    content: "";
+    background: url(../../../assets/images/account/play.png);
+    display: inline-flex;
+    width: 8px;
+    height: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

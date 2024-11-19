@@ -1,0 +1,43 @@
+.overviewTabs{
+    display: block;
+    width: 100%;
+}
+.overviewTabs a{
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    background: #f6f7ff;
+    padding: 13px 10px 14px 10px;
+    border-radius: 10px;
+    width: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.overveiw_icons{
+    background: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.overveiw_icons img{
+    width: 18px;
+}
+.overview_text{
+    padding-top: 5px;
+}
+.overview_head{
+    font-family: "Satoshi-Bold";
+    font-size: 12px;
+    color: #000000;
+    margin-bottom: 4px;
+    display: block;
+}
+.overview_para{
+    font-family: "Satoshi-Medium";
+    display: block;
+    font-size: 12px;
+    color: #727272;
+}

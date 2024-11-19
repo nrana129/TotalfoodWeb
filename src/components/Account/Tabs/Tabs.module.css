@@ -1,0 +1,44 @@
+.Tabs_section {
+  background: transparent;
+  border: 1px solid #b2b2b4;
+  border-radius: 20px;
+  width: 290px;
+}
+
+.Tabs_section_list {
+  margin: 0;
+  padding: 0 20px;
+  transition: 0.3s;
+}
+.Tabs_section_list a,
+.Tabs_section_list span {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 15px 0 !important;
+  color: #000;
+  padding-left: 0;
+  background: transparent;
+  font-family: "Satoshi-Bold";
+  text-transform: capitalize;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.Tabs_section_list span:after{
+    content: "";
+    background: url(../../../assets/images/account/blue_arrow_right.svg);
+    display: inline-flex;
+    width: 10px;
+    height: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+.Tabs_section_list.active span:after{
+    transform: rotate(180deg);
+}
+.Tabs_section_list ul {
+  padding-left: 20px;
+}
