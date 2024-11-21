@@ -1,20 +1,10 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from "redux";
+import authReducer from "./reducers/authReducer";
 
-const initialState = {
-  Qtycounter: 0,
-};
+const rootReducer = combineReducers({
+  auth: authReducer,
+});
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { ...state, Qtycounter: state.Qtycounter + 1 };
-    case 'DECREMENT':
-      return { ...state, Qtycounter: state.Qtycounter - 1 };
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 export default store;

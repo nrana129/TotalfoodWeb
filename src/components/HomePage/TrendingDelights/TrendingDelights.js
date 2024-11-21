@@ -31,11 +31,16 @@ const TrendingDelights = () => {
       });
   };
 
+  console.log("trendingDatatrendingData", trendingData);
   useEffect(() => {
     fetchTrendingData();
   }, []);
 
+  
 
+  trendingData.forEach((category) => {
+    category.categoryName = category.name.toLowerCase().replace(/\s+/g, "-");
+  });
 
   return (
     <div className="TrendingDelights">
@@ -46,7 +51,7 @@ const TrendingDelights = () => {
         <ul className="flex flex-wrap">
           {trendingData.map((data) => (
             <li key={data.id} className="w-1/4 px-3">
-              <Link to="/ListPage">
+              <Link to={`${data.categoryName}/${data.id}`}>
                 <span className="product_img">
                   <img src={data.image} alt={`Categories-${data.id}`} />
                 </span>

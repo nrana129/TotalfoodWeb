@@ -1,0 +1,54 @@
+.product_main {
+  display: flex;
+  .left_section {
+      width: 280px;
+      padding: 0;
+      position: sticky;
+      left: 0;
+      top: 100px;
+      display: block;
+      padding-right: 30px;
+      box-sizing: border-box;
+      max-height: 85vh;
+      overflow-y: scroll;
+    .ShopByCategories {
+      .container {
+        padding: 0;
+        ul {
+          display: flex;
+
+          flex-direction: column;
+          text-align: center;
+          grid-gap: 20px;
+          li {
+            a {
+              display: flex;
+              align-items: center;
+              grid-gap: 10px;
+              .product_img {
+                width: 60px;
+                margin: 0;
+              }
+              h3 {
+                margin: 0;
+                font-size: 13px;
+                margin-left: 10px;
+                font-family: "Satoshi-Medium";
+                color: #3e3e3e;
+                line-height: 17px;
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .right_section {
+    width: calc(100% - 280px);
+    .product_card_main {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}

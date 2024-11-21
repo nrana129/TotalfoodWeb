@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ShopByCategories from "../../components/HomePage/ShopByCategories/ShopByCategories";
 import Products from "../../components/ProductCard/Products";
 import { getData } from "../../utils/api";
-import "./ProductList.scss";
+import "./ProductCategory.scss";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 
 const Product = () => {
