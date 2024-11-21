@@ -16,18 +16,18 @@ const RightSec = ({ productDetail }) => {
           <ul>
             <li>
               <span></span>
-              <h3>{productDetail[0].options[0]?.ksp}</h3>
+              <h3>{productDetail[0]?.options[0]?.ksp}</h3>
 
               {/* {JSON.stringify(productDetail[0].options[0].ksp)} */}
             </li>
             <li>
               <span></span>
-              <h3>{productDetail[0].options[0]?.pieces}</h3>
+              <h3>{productDetail[0]?.options[0]?.pieces}</h3>
             </li>
           </ul>
         </div>
         <div className="price_sec">
-          <span className="price">{productDetail[0].options[0]?.price}</span>
+          <span className="price">{productDetail[0]?.options[0]?.price}</span>
         </div>
         <span className="inclusive_of_all_taxes">inclusive of all taxes</span>
 

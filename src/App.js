@@ -41,7 +41,7 @@ function App() {
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path="shipping-policy" element={<ShippingPolicy />} />
         <Route path="terms-condition" element={<TermsCondition />} />
-        <Route path="product-detail" element={<ProductDetailPage />} />
+        <Route path="product-detail/:sku" element={<ProductDetailPage />} />
         <Route path="overview" element={<Account />} />
         <Route path="my-order" element={<MyOrder />} />
         <Route path="address-book" element={<Address />} />
