@@ -1,16 +1,21 @@
 .product_main {
   display: flex;
   .left_section {
-      width: 280px;
-      padding: 0;
-      position: sticky;
-      left: 0;
-      top: 100px;
-      display: block;
-      padding-right: 30px;
-      box-sizing: border-box;
-      max-height: 85vh;
-      overflow-y: scroll;
+    width: 280px;
+    padding: 0;
+    position: sticky;
+    left: 0;
+    top: 100px;
+    display: block;
+    padding-right: 30px;
+    box-sizing: border-box;
+    max-height: 85vh;
+    overflow-y: scroll;
+    .categories_loader {
+      display: flex;
+      margin: 0;
+      flex-direction: column;
+    }
     .ShopByCategories {
       .container {
         padding: 0;

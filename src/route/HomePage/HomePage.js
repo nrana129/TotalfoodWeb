@@ -36,7 +36,7 @@ const HomePage = () => {
       </div>
       <ProductTab />
       <TrendingDelights />
-      <TotalClubBanner />
+      {/* <TotalClubBanner /> */}
       <MustTry />
       <GetUptoBanner />
       <SafetyGuranteed />
