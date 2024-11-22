@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css/navigation'
+import "swiper/css/navigation";
 import { Navigation, Thumbs } from "swiper/modules";
 
 // Import Swiper styles
@@ -10,10 +10,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 
-const ImageSlider = () => {
-
+const ImageSlider = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
-
 
   return (
     <div className="left_section">
@@ -28,20 +26,12 @@ const ImageSlider = () => {
         modules={[Navigation, Thumbs]}
       >
         <SwiperSlide>
-          <img
-            src="https://totalfood.greenhonchos.in/media/catalog/product/cache/c268a9164b491bcbb984c0cb4a259ed1/d/s/dsc_0276-edit.jpg"
-            alt=""
-          />
+          <img src={images[0]?.image} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://totalfood.greenhonchos.in/media/catalog/product/cache/c268a9164b491bcbb984c0cb4a259ed1/d/s/dsc_0276-edit.jpg"
-            alt=""
-          />
+          <img src={images[0]?.image} alt="" />
         </SwiperSlide>
       </Swiper>
-
-
 
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -53,16 +43,10 @@ const ImageSlider = () => {
         className="thumbSwiper"
       >
         <SwiperSlide>
-          <img
-            src="https://totalfood.greenhonchos.in/media/catalog/product/cache/c268a9164b491bcbb984c0cb4a259ed1/d/s/dsc_0276-edit.jpg"
-            alt=""
-          />
+          <img src={images[0]?.image} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            src="https://totalfood.greenhonchos.in/media/catalog/product/cache/c268a9164b491bcbb984c0cb4a259ed1/d/s/dsc_0276-edit.jpg"
-            alt=""
-          />
+          <img src={images[0]?.image} alt="" />
         </SwiperSlide>
       </Swiper>
     </div>

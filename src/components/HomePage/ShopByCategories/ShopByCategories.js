@@ -29,7 +29,7 @@ const ShopByCategories = ({ title, description }) => {
       });
   };
 
-  console.log("categoriesDatacategoriesData", categoriesData)
+  console.log("categoriesDatacategoriesData", categoriesData);
 
   useEffect(() => {
     fetchShopCategorielData();
@@ -58,11 +58,13 @@ const ShopByCategories = ({ title, description }) => {
   );
 
   console.log(filteredCategories);
+  filteredCategories.forEach((category) => {
+    category.categoryName = category.name.toLowerCase().replace(/\s+/g, "-");
+  });
 
   return (
     <div className="ShopByCategories my-10">
       <div className="container">
-        
         {title ? <h2>{title}</h2> : null}
         {description ? <p>{description}</p> : null}
 
@@ -70,7 +72,7 @@ const ShopByCategories = ({ title, description }) => {
           {filteredCategories.map((data) => (
             <li key={data.id}>
               {/* <a href={`http://localhost:3000//${data.link}`}> */}
-              <Link to={`/ProductList/${data.id}`} >
+              <Link to={`/${data.categoryName}/${data.id}`}>
                 <span className="product_img">
                   <img src={data.image} alt={`Categories-${data.id}`} />
                 </span>

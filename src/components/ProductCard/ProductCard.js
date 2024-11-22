@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ProductCard.scss"
+import "./ProductCard.scss";
+import ProductDetailPage from "../../route/ProductDetailPage/ProductDetailPage";
 
 // You can pass different props to customize the component
-const ProductCard = ({ product }) => {
-
-  console.log("productproductproductproduct", product)
+const ProductCard = ({ product, handleProductClick }) => {
+  console.log("productproductproductproduct", product);
   return (
     <div className="product-card">
       {/* Product Image */}
       <div className="product-img">
-        <img src={product?.image} alt={product?.name} />
+        <Link to={`/product-detail/${product.sku}`}>
+          <img src={product?.image} alt={product?.name} />
+        </Link>
       </div>
 
       {/* Product Details */}

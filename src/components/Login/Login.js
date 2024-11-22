@@ -2,7 +2,10 @@ import React, { useState, useRef } from "react";
 import { login_banner, msg_icon } from "../../assets/images/index";
 import Register from "../../components/Register/Register";
 
-const Login = ({onLoginSuccess}) => {
+import { useDispatch } from "react-redux";
+import { setAuthData } from "../../store/actions/authActions";
+
+const Login = ({ onLoginSuccess }) => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [loading, setLoading] = useState(false);
@@ -12,6 +15,8 @@ const Login = ({onLoginSuccess}) => {
   const [isCustomerRegistered, setIsCustomerRegistered] = useState(true);
   const [responseMessage, setResponseMessage] = useState("");
   const inputRefs = useRef([]);
+
+  const dispatch = useDispatch();
 
   const handleMobileChange = (e) => {
     setMobileNumber(e.target.value);
@@ -63,11 +68,10 @@ const Login = ({onLoginSuccess}) => {
         setIsCustomerRegistered(false); // Set this to false if customer is not registered
         setResponseMessage(data.message);
       }
-      
+
       if (!response.ok) {
         throw new Error(data.message || "Failed to send OTP");
       }
-      
     } catch (error) {
       console.error("Error sending OTP:", error);
       setError(error.message);
@@ -77,6 +81,9 @@ const Login = ({onLoginSuccess}) => {
       setLoading(false);
     }
   };
+
+
+  console.log("responseMessageresponseMessage", responseMessage)
 
   const handleOtpVerify = async (e) => {
     e.preventDefault();
@@ -98,14 +105,18 @@ const Login = ({onLoginSuccess}) => {
               "Bearer eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjIsInV0eXBpZCI6MiwiaWF0IjoxNzIxMzkxNjgwLCJleHAiOjE3MjEzOTUyODB9.KV3NjeUDc0pYsAYRbhEdELKt375JaNrNsFOH9BmvZks",
           },
           body: JSON.stringify({
-            mobileNumber: mobileNumber, 
+            mobileNumber: mobileNumber,
             otpCode: otpString,
+            guestQuoteId: "",
           }),
         }
       );
 
       const data = await response.json();
       console.log("Response Data:", data);
+
+
+
 
       if (!response.ok) {
         if (data.message.includes("OTP expired")) {
@@ -116,17 +127,23 @@ const Login = ({onLoginSuccess}) => {
       } else {
         setVerificationStatus("success");
 
-
-        if (data.token) {  // Ensure the token is in the response
-          localStorage.setItem('authToken', data.token); // Store the token
+        if (data.token) {
+          // Ensure the token is in the response
+          localStorage.setItem("authToken", data.token); // Store the token
         }
-
-        
 
         if (onLoginSuccess) {
           onLoginSuccess(); // Call the callback on successful login
         }
       }
+
+      dispatch(
+        setAuthData({
+          customerId: data.customer_id,
+          quoteId: data.quote_id,
+          token: data.token,
+        })
+      );
       
     } catch (error) {
       console.error("Error verifying OTP:", error);
@@ -187,7 +204,7 @@ const Login = ({onLoginSuccess}) => {
                     maxLength="1"
                     value={digit}
                     onChange={(e) => handleOtpChange(index, e)}
-                    ref={(el) => inputRefs.current[index] = el}
+                    ref={(el) => (inputRefs.current[index] = el)}
                     autoFocus={index === 0}
                   />
                 ))}

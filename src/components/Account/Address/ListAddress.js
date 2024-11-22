@@ -4,23 +4,21 @@ const ListAddress = () => {
   return (
     <li>
       <div class="d-flex">
-        <div class="name">Naveen Rana </div>
+        <div class="name">test test </div>
         <div class="address_place">
-          <span>home</span>
+          <span>work</span>
         </div>
       </div>
-      <div class="address">
-        220/20 Street No 5 Mandawali, Delhi, Delhi, 110092{" "}
-      </div>
-      <div class="mobile_no">Phone Number : 9811266319 </div>
+      <div class="address">twat </div>
+      <div class="mobile_no">Phone Number : 9876543210 </div>
       <div class="bottom_foot">
         <div>
-          <a href="#" class="open-popup-edit" data-address-id="344">
+          <a href="#" class="open-popup-edit" data-address-id="594">
             edit
           </a>
         </div>
         <div>
-          <a href="#" class="delete-address" data-address-id="344">
+          <a href="#" class="delete-address" data-address-id="594">
             Delete
           </a>
         </div>

@@ -1,0 +1,55 @@
+.address_book {
+  .right_section {
+    width: 65%;
+    .all_address {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px;
+      li {
+        border: 1px solid #e8e8e8;
+        padding: 18px;
+        border-radius: 13px;
+        .d-flex {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .name {
+          }
+          .address_place {
+            span {
+              display: inline-block;
+              background: #f2f3ff;
+              border-radius: 26px;
+              color: #1d2b95;
+              font-family: "Satoshi-Bold";
+              padding: 5px 15px;
+              font-size: 12px;
+              text-transform: capitalize;
+            }
+          }
+        }
+        .address {
+          font-family: "Satoshi-Regular";
+          font-size: 13px;
+          margin-top: 10px;
+          margin-bottom: 6px;
+        }
+        .mobile_no {
+          font-family: "Satoshi-Regular";
+          font-size: 13px;
+          margin-bottom: 20px;
+        }
+        .bottom_foot {
+          display: flex;
+          grid-gap: 20px;
+          a {
+            color: #1d2b95;
+            text-transform: capitalize;
+            font-family: "Satoshi-Bold";
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

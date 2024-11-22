@@ -65,7 +65,7 @@
           position: relative;
           &:first-child {
             span {
-              background: url(../../images/ProductDetails/serve.svg);
+              background: url(../../assets/images/ProductDetails/serve.svg);
               width: 14px;
               height: 14px;
               display: inline-block;
@@ -76,7 +76,7 @@
           }
           &:nth-child(2) {
             span {
-              background: url(../../images/ProductDetails/piece.svg);
+              background: url(../../assets/images/ProductDetails/piece.svg);
               width: 14px;
               height: 14px;
               display: inline-block;
@@ -194,7 +194,7 @@
             cursor: pointer;
             &:after {
               content: "";
-              background: url(../../images/Img/sprite_icons.png) -365px -46px;
+              background: url(../../assets/images/Img/sprite_icons.png) -365px -46px;
               width: 20px;
               height: 20px;
               font-size: 0;
