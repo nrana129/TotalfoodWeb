@@ -18,6 +18,12 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Default to false
   const Qtycounter = useSelector((state) => state.Qtycounter);
   const [QtycounterShow, setQtycounterShow] = useState(false);
+  const cart = useSelector((state) => state.cart);
+
+
+
+  console.log('total quantity' + cart.totalQuantity);
+  console.log('total items' + cart.items.item_id);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -214,6 +220,7 @@ const Header = () => {
               {QtycounterShow && (
                 <span className="Qtycounter">{Qtycounter}</span>
               )}
+              <span className="Qtycounter">{cart.totalQuantity}</span>
               <span onClick={handleToggleCart} className="cart_icon"></span>
               <div
                 className={`miniCartContent ${showCart ? "active" : ""}`}

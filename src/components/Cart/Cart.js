@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { TryMust } from "../../assets/images/index";
-
+import { useSelector } from "react-redux";
 const Cart = () => {
   const [Qtycounter, setQtyCounter] = useState(1);
+  const cart = useSelector((state) => state.cart);
+
+
 
   const incrementCounter = () => {
     setQtyCounter(Qtycounter + 1);
