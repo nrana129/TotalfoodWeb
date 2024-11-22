@@ -1,249 +1,160 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Tabs from "../Tabs/Tabs";
 import "./MyOrder.scss";
+import { getData } from "../../../utils/api";
+import { useSelector } from "react-redux";
 
 const MyOrder = () => {
-  // State to track active tab
   const [activeTab, setActiveTab] = useState("tab1");
+  const [orders, setOrders] = useState([]); // Default is an empty array
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const auth = useSelector((state) => state.auth);
 
-  // Function to handle tab click
+  const fetchOrderlData = () => {
+    getData(`/customer/orders/92`, {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    })
+      .then((response) => {
+        console.log("API response:", response); // Log the response here
+        if (response?.status === true) {
+          setOrders(response.data); // Ensure it's an array
+        } else {
+          setError("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching order data:", error);
+        setError("Failed to fetch orders");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  console.log("ordersorders", orders);
+
+  useEffect(() => {
+    fetchOrderlData();
+  }, []);
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
+  // Calculate counts dynamically
+  const activeOrdersCount = orders.filter(
+    (order) => order.order_status === "order_confirmed"
+  ).length;
+
+  const completedOrdersCount = orders.filter(
+    (order) => order.order_status === "delivered"
+  ).length;
+
+  const cancelledOrdersCount = orders.filter(
+    (order) => order.order_status === "canceled"
+  ).length;
+
   return (
     <div className="container">
+      <div>
+        <p>Customer ID: {auth.customerId}</p>
+        <p>Quote ID: {auth.quoteId}</p>
+        <p>Token: {auth.token}</p>
+      </div>
       <div className="account my_order">
         <Tabs />
 
         <div className="my_order_section">
           <h2>My Orders</h2>
+
+          {JSON.stringify(orders)}
           <ul className="navigation_tab">
             <li
               className={activeTab === "tab1" ? "active" : ""}
               onClick={() => handleTabClick("tab1")}
             >
-              Active <span>0</span>
+              Active <span>{activeOrdersCount}</span>
             </li>
             <li
               className={activeTab === "tab2" ? "active" : ""}
               onClick={() => handleTabClick("tab2")}
             >
-              Completed <span>0</span>
+              Completed <span>{completedOrdersCount}</span>
             </li>
             <li
               className={activeTab === "tab3" ? "active" : ""}
               onClick={() => handleTabClick("tab3")}
             >
-              Cancelled <span>0</span>
+              Cancelled <span>{cancelledOrdersCount}</span>
             </li>
           </ul>
+
           <div className="navigation_content">
-            {activeTab === "tab1" && (
+            {loading ? (
+              <p>Loading orders...</p>
+            ) : (
               <div className="bottom_content_section active_sec">
                 <ul className="list_order">
-                  <div className="empty_order_sec">
-                    <li>
-                      <div class="mainorder-items">
-                        <div class="top_header">
-                          <div class="left_section">
-                            <div class="arriving_img">
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712054743/frontend/Greenhonchos/totalfood/en_US/images/Arriving.svg"
-                                alt="arriving_icon"
-                              />
+                  {orders.map((order) => (
+                    <div key={order.increment_id} className="empty_order_sec">
+                      <li>
+                        <div className="mainorder-items">
+                          <div className="top_header">
+                            <div className="left_section">
+                              <div className="arriving_img">
+                                <img
+                                  src="https://totalfood.greenhonchos.in//static/version1712054743/frontend/Greenhonchos/totalfood/en_US/images/Arriving.svg"
+                                  alt="arriving_icon"
+                                />
+                              </div>
+                              <div className="arriving_text">
+                                <div>
+                                  <strong>Order_confirmed</strong>
+                                  <span>{order.increment_id}</span>
+                                  <p className="date_format">
+                                    Placed on {order.created_at}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
-                            <div class="arriving_text">
-                              <div>
-                                <strong>Order_confirmed</strong>
-                                <span>#000000234</span>
-                                <p class="date_format">
-                                  {" "}
-                                  Placed on Thu, 14 Nov'24, 09:25 PM
+                            <div className="right_section" id="full_btn">
+                              <a
+                                href={`https://totalfood.greenhonchos.in/tfaccount/order/orderdetails?order_id=${order.increment_id}`}
+                              >
+                                <span>Full Details</span>
+                              </a>
+                              <span>
+                                <img
+                                  src="https://totalfood.greenhonchos.in//static/version1712143100/frontend/Greenhonchos/totalfood/en_US/images/blue_arrow_right.svg"
+                                  alt=""
+                                />
+                              </span>
+                            </div>
+                          </div>
+                          <div className="food_detail">
+                            <div className="food_detail_itm">
+                              {order.items.map((item, index) => (
+                                <p key={index}>
+                                  {item.name}{" "}
+                                  <span>({item.qty_ordered} Pieces)</span> x{" "}
+                                  {item.qty_ordered}
                                 </p>
+                              ))}
+                            </div>
+                            <div className="delivery_detail">
+                              <div className="order_price">
+                                <span>₹{order.grand_total}</span>
                               </div>
                             </div>
                           </div>
-                          <div class="right_section" id="full_btn">
-                            <a href="https://totalfood.greenhonchos.in/tfaccount/order/orderdetails?order_id=234">
-                              {" "}
-                              <span>Full Details</span>
-                            </a>
-                            <span>
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712143100/frontend/Greenhonchos/totalfood/en_US/images/blue_arrow_right.svg"
-                                alt=""
-                              />
-                            </span>
-                          </div>
                         </div>
-                        <div class="food_detail">
-                          <div class="food_detail_itm">
-                            <p>
-                              Chicken Cocktail Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                            <p>
-                              Chicken Breast Boneless <span>(2-3 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Classic Salami <span>(9-11 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Cheese Onion Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                          </div>
-                          <div class="delivery_detail">
-                            <div class="order_price">
-                              <span>₹810</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            )}
-            {activeTab === "tab2" && (
-              <div className="bottom_content_section completed">
-                <ul className="list_order">
-                  <div className="empty_order_sec">
-                    <div className="empty_icon"></div>
-                    <li>
-                      <div class="mainorder-items">
-                        <div class="top_header">
-                          <div class="left_section">
-                            <div class="arriving_img">
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712054743/frontend/Greenhonchos/totalfood/en_US/images/Arriving.svg"
-                                alt="arriving_icon"
-                              />
-                            </div>
-                            <div class="arriving_text">
-                              <div>
-                                <strong>Order_confirmed</strong>
-                                <span>#000000234</span>
-                                <p class="date_format">
-                                  {" "}
-                                  Placed on Thu, 14 Nov'24, 09:25 PM
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="right_section" id="full_btn">
-                            <a href="https://totalfood.greenhonchos.in/tfaccount/order/orderdetails?order_id=234">
-                              {" "}
-                              <span>Full Details</span>
-                            </a>
-                            <span>
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712143100/frontend/Greenhonchos/totalfood/en_US/images/blue_arrow_right.svg"
-                                alt=""
-                              />
-                            </span>
-                          </div>
-                        </div>
-                        <div class="food_detail">
-                          <div class="food_detail_itm">
-                            <p>
-                              Chicken Cocktail Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                            <p>
-                              Chicken Breast Boneless <span>(2-3 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Classic Salami <span>(9-11 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Cheese Onion Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                          </div>
-                          <div class="delivery_detail">
-                            <div class="order_price">
-                              <span>₹810</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            )}
-            {activeTab === "tab3" && (
-              <div className="bottom_content_section cancelled">
-                <ul className="list_order">
-                  <div className="empty_order_sec">
-                    <li>
-                      <div class="mainorder-items">
-                        <div class="top_header">
-                          <div class="left_section">
-                            <div class="arriving_img">
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712054743/frontend/Greenhonchos/totalfood/en_US/images/Arriving.svg"
-                                alt="arriving_icon"
-                              />
-                            </div>
-                            <div class="arriving_text">
-                              <div>
-                                <strong>Order_confirmed</strong>
-                                <span>#000000234</span>
-                                <p class="date_format">
-                                  {" "}
-                                  Placed on Thu, 14 Nov'24, 09:25 PM
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="right_section" id="full_btn">
-                            <a href="https://totalfood.greenhonchos.in/tfaccount/order/orderdetails?order_id=234">
-                              {" "}
-                              <span>Full Details</span>
-                            </a>
-                            <span>
-                              <img
-                                src="https://totalfood.greenhonchos.in//static/version1712143100/frontend/Greenhonchos/totalfood/en_US/images/blue_arrow_right.svg"
-                                alt=""
-                              />
-                            </span>
-                          </div>
-                        </div>
-                        <div class="food_detail">
-                          <div class="food_detail_itm">
-                            <p>
-                              Chicken Cocktail Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                            <p>
-                              Chicken Breast Boneless <span>(2-3 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Classic Salami <span>(9-11 Pieces)</span>{" "}
-                              x 1
-                            </p>
-                            <p>
-                              Chicken Cheese Onion Sausages{" "}
-                              <span>(8-9 Pieces)</span> x 1
-                            </p>
-                          </div>
-                          <div class="delivery_detail">
-                            <div class="order_price">
-                              <span>₹810</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
+                      </li>
+                    </div>
+                  ))}
                 </ul>
               </div>
             )}
