@@ -1,0 +1,16 @@
+.copynotification {
+    color: green;
+    font-size: 14px;
+    margin-top: 5px;
+    animation: fadeOut 2s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
