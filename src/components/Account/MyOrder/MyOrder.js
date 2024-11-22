@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useSelector } from "react-redux";
+import { getData } from "../../../utils/api";
 import Tabs from "../Tabs/Tabs";
 import "./MyOrder.scss";
-import { getData } from "../../../utils/api";
-import { useSelector } from "react-redux";
 
 const MyOrder = () => {
   const [activeTab, setActiveTab] = useState("tab1");
   const [orders, setOrders] = useState([]); // Default is an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth); // Accessing the auth state
 
-  const fetchOrderlData = () => {
-    getData(`/customer/orders/92`, {
-      headers: {
-        Authorization: `Bearer ${auth.token}`,
-      },
-    })
+  const fetchOrderData = () => {
+    const token = auth.token; // Get token from Redux store
+
+    if (!token) {
+      setError("No authentication token found");
+      setLoading(false);
+      return;
+    }
+
+    getData("customer/orders/92", token) // Pass the token to the API call
       .then((response) => {
-        console.log("API response:", response); // Log the response here
+        console.log("responseNaveen", response);
         if (response?.status === true) {
-          setOrders(response.data); // Ensure it's an array
+          setOrders(response.data); // Set the data in state
         } else {
           setError("No data available");
         }
@@ -35,17 +38,27 @@ const MyOrder = () => {
       });
   };
 
-  console.log("ordersorders", orders);
-
   useEffect(() => {
-    fetchOrderlData();
-  }, []);
+    fetchOrderData();
+  }, [auth.token]); // Trigger when auth.token changes
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
-  // Calculate counts dynamically
+  // Filter orders based on the selected tab
+  const filteredOrders = orders.filter((order) => {
+    if (activeTab === "tab1") {
+      return order.order_status === "order_confirmed"; // Active orders
+    } else if (activeTab === "tab2") {
+      return order.order_status === "delivered"; // Completed orders
+    } else if (activeTab === "tab3") {
+      return order.order_status === "canceled"; // Cancelled orders
+    }
+    return true; // Default case
+  });
+
+  // Calculate counts dynamically for tabs
   const activeOrdersCount = orders.filter(
     (order) => order.order_status === "order_confirmed"
   ).length;
@@ -71,7 +84,6 @@ const MyOrder = () => {
         <div className="my_order_section">
           <h2>My Orders</h2>
 
-          {JSON.stringify(orders)}
           <ul className="navigation_tab">
             <li
               className={activeTab === "tab1" ? "active" : ""}
@@ -99,7 +111,7 @@ const MyOrder = () => {
             ) : (
               <div className="bottom_content_section active_sec">
                 <ul className="list_order">
-                  {orders.map((order) => (
+                  {filteredOrders.map((order) => (
                     <div key={order.increment_id} className="empty_order_sec">
                       <li>
                         <div className="mainorder-items">

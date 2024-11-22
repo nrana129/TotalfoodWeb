@@ -1,11 +1,9 @@
-// src/utils/api.js
 import axios from "axios";
-// import { store } from "../store/Store"; // Adjust the path if necessary
+import { useSelector } from "react-redux";
 
 // Base URL of your API
 const BASE_URL =
   "https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/";
-
 
 // Create an axios instance
 const api = axios.create({
@@ -18,31 +16,21 @@ const api = axios.create({
 });
 
 // Function to update Bearer token dynamically
+// This function expects the token to be passed from your component
 const setBearerToken = (token) => {
   if (token) {
+    console.log("Setting Bearer Token:", token); // Log to check the token value
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   } else {
+    console.log("Token is not available");
     delete api.defaults.headers.common["Authorization"];
   }
 };
 
-
-// console.log("setBearerToken=====> ", setBearerToken)
-
-// Apply initial token from Redux store
-// const initializeBearerToken = () => {
-//   const storeState = store.getState();
-//   const token = storeState?.user?.customerData?.bearerToken;
-//   setBearerToken(token);
-// };
-
-// Initialize the Bearer token
-// initializeBearerToken();
-
 // Interceptors
 api.interceptors.request.use(
   (config) => {
-    // Perform actions before the request is sent
+    // Log the request configuration for debugging
     console.log("Request Config:", config);
     return config;
   },
@@ -62,8 +50,9 @@ api.interceptors.response.use(
 );
 
 // CRUD Operations
-export const getData = async (endpoint) => {
+export const getData = async (endpoint, token) => {
   try {
+    setBearerToken(token); // Set token dynamically
     const response = await api.get(endpoint);
     return response.data;
   } catch (error) {
@@ -72,8 +61,9 @@ export const getData = async (endpoint) => {
   }
 };
 
-export const postData = async (endpoint, data) => {
+export const postData = async (endpoint, data, token) => {
   try {
+    setBearerToken(token); // Set token dynamically
     const response = await api.post(endpoint, data);
     return response.data;
   } catch (error) {
