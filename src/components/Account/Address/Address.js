@@ -1,11 +1,12 @@
 import React from "react";
 import ListAddress from "./ListAddress";
 import Tabs from "../Tabs/Tabs";
+import "./Address.scss"
 
 const Address = () => {
   return (
     <div className="container">
-      <main className="account">
+      <main className="flex gap-10 my-10 address_book">
         <div className="left_section">
           <Tabs />
         </div>

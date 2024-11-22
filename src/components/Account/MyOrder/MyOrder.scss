@@ -1,0 +1,170 @@
+.my_order {
+  .my_order_section {
+    width: 45%;
+    .navigation_tab {
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 70px;
+      border-bottom: 1px solid #dedede;
+      li {
+        margin: 0;
+        font-family: "Satoshi-Bold";
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 10px;
+        font-size: 14px;
+        span{
+            background: #e8e8e8;
+            width: 16px;
+            height: 16px;
+            font-size: 11px;
+            font-family: 'Satoshi-Bold';
+            text-align: center;
+            border-radius: 50%;
+            margin-left: 8px;
+            color: #848484;
+            line-height: 16px;
+        }
+        &:after{
+            content: "";
+            background: transparent;
+            width: 100px;
+            display: block;
+            height: 3px;
+            margin-top: 10px;
+            border-radius: 4px 4px 0 0;
+            position: absolute;
+            bottom: 0;
+        }
+        &.active:after{
+            background: #1d2b95;
+        }
+      }
+    }
+    .navigation_content {
+      .list_order {
+        .empty_order_sec {
+          margin-top: 40px;
+          li {
+            border: 1px solid #dedede;
+            border-radius: 13px;
+            padding: 20px;
+            .mainorder-items {
+              .top_header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                .left_section {
+                  display: flex;
+                  grid-gap: 15px;
+                  .arriving_img {
+                    width: 48px;
+                    height: 48px;
+                    background: #d9dcf2;
+                    border-radius: 11px;
+                    display: inline-flex;
+                    padding: 10px;
+                    box-sizing: border-box;
+                  }
+                  .arriving_text {
+                    div {
+                      strong {
+                        font-family: "Satoshi-Bold";
+                        font-size: 14px;
+                        color: #000;
+                        text-transform: capitalize;
+                      }
+                      span {
+                        font-family: "Satoshi-Regular";
+                        color: #9c9c9c;
+                        font-size: 12px;
+                      }
+                      .date_format {
+                        font-family: "Satoshi-Regular";
+                        color: #9c9c9c;
+                        font-size: 12px;
+                        margin: 6px 0 0 0;
+                      }
+                    }
+                  }
+                }
+                .right_section {
+                  display: flex;
+                  grid-gap: 5px;
+                  align-items: center;
+                  width: auto;
+                  a {
+                    span {
+                      display: inline-flex;
+                      font-size: 12px;
+                      height: 16px;
+                      color: #1d2b95;
+                      font-family: "Satoshi-Bold";
+                    }
+                  }
+                  span {
+                    img {
+                      transform: rotate(270deg);
+                      width: 10px;
+                    }
+                  }
+                }
+              }
+              .food_detail {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                .food_detail_itm {
+                  p {
+                    margin: 0;
+                    margin-bottom: 12px;
+                    display: flex;
+                    grid-gap: 3px;
+                    align-items: center;
+                    font-family: "Satoshi-Medium";
+                    font-size: 12px;
+                    &::before {
+                      content: "";
+                      width: 15px;
+                      height: 15px;
+                      background-color: #00961f;
+                      display: block;
+                      border-radius: 50%;
+                      background-image: url(../../../assets/images/account/check-mark.png);
+                      background-size: 8px;
+                      background-repeat: no-repeat;
+                      background-position: center;
+                      margin-right: 5px;
+                    }
+                    span {
+                      font-family: "Satoshi-Regular";
+                      color: #9c9c9c;
+                    }
+                  }
+                }
+                .delivery_detail {
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 0px;
+                  align-items: flex-end;
+                  .order_price {
+                    span {
+                      font-size: 16px;
+                      color: #000;
+                      font-family: "Satoshi-Bold";
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
