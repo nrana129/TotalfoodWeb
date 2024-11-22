@@ -14,6 +14,7 @@ import CustomerSupport from "./components/Account/CustomerSupport/CustomerSuppor
 import ReferEarn from "./components/Account/ReferEarn/ReferEarn";
 import ProductCategory from "./route/ProductCategory/ProductCategory"
 
+
 // import Blog from "./pages/Blog/Blog";
 // import Contact from "./pages/Contact/Index";
 import FAQPage from "./route/FaqPage/Faq";

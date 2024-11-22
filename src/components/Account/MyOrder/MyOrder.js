@@ -20,7 +20,7 @@ const MyOrder = () => {
       return;
     }
 
-    getData("customer/orders/92", token) // Pass the token to the API call
+    getData(`customer/orders/${auth.customerId}`, token) // Pass the token to the API call
       .then((response) => {
         console.log("responseNaveen", response);
         if (response?.status === true) {
