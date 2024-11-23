@@ -5,6 +5,11 @@ import RightSec from "../../components/ProductDetail/RightSec";
 import FoodVideo from "../../components/HomePage/FoodVideo/FoodVideo";
 import { getData } from "../../utils/api";
 import "./ProductDetailPage.scss";
+import {
+  ShimmerThumbnail,
+  ShimmerSectionHeader,
+  ShimmerText,
+} from "react-shimmer-effects";
 
 const ProductDetailPage = () => {
   const { sku } = useParams(); // Extract SKU from URL
@@ -40,7 +45,17 @@ const ProductDetailPage = () => {
 
   // Render loading, error, or product detail
   if (loading) {
-    return <div className="loading">Loading product details...</div>;
+    return (
+      <div className="loading flex gap-10">
+        <div className="left_section">
+          <ShimmerThumbnail height={730} rounded />
+        </div>
+        <div className="right_section">
+          <ShimmerSectionHeader />
+          <ShimmerText line={8} gap={15} />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -48,14 +63,14 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <>
-      <div className="flex gap-10 custom_product_detail">
-        <ImageSlider images={productDetail} />{" "}
+    <div className="custom_product_detail">
+      <div className="flex gap-10">
+        <ImageSlider images={productDetail} imageLoading={loading} />{" "}
         {/* Pass product images */}
         <RightSec productDetail={productDetail} /> {/* Pass product details */}
       </div>
       <FoodVideo />
-    </>
+    </div>
   );
 };
 
