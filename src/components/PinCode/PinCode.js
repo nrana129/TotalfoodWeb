@@ -28,7 +28,7 @@ const PinCode = ({ onAddressSelect }) => {
           )}&key=AIzaSyBG8qOgtDAquWwMDnv4m2TFBZJHizuSnmU`,
           {
             headers: {
-              "x-cors-api-key": "temp_efccee76b63a0822c956c81b6631296a",
+              "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
             },
           }
         );
@@ -51,7 +51,7 @@ const PinCode = ({ onAddressSelect }) => {
         `https://proxy.cors.sh/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyBG8qOgtDAquWwMDnv4m2TFBZJHizuSnmU`,
         {
           headers: {
-            "x-cors-api-key": "temp_efccee76b63a0822c956c81b6631296a",
+            "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
           },
         }
       );
