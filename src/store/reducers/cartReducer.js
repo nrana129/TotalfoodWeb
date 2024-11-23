@@ -10,36 +10,53 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       const newItem = action.payload;
-
+      // console.log(newItem.sku + newItem.name + newItem.price);
       // Check if the item already exists in the cart
       const existingItemIndex = state.items.findIndex((item) => item.sku === newItem.sku);
+
+      
 
       if (existingItemIndex >= 0) {
         // Update quantity if the item already exists in the cart
         const updatedItems = [...state.items];
+        console.log('new quantity' + newItem.qty);
         updatedItems[existingItemIndex].qty += newItem.qty;
         
         // Set the total quantity to the last added item's quantity
         return {
           ...state,
           items: updatedItems,
-          totalQuantity: newItem.qty,  // Set only the new item's quantity
+          totalQuantity: newItem.qty, // Update total quantity
+          newItemName: newItem.name,  // Set only the new item's quantity
+          newItemPrice: newItem.price,  // Set only the new item's quantity
+          newItemSku: newItem.sku,  // Set only the new item's quantity
         };
       } else {
         // Add the new item to the cart
         return {
           ...state,
           items: [...state.items, newItem],
-          totalQuantity: newItem.qty,  // Set only the new item's quantity
+          totalQuantity: newItem.qty, // Update total quantity
+
+          newItemName: newItem.name,  // Set only the new item's quantity
+          newItemPrice: newItem.price,  // Set only the new item's quantity
+          newItemSku: newItem.sku,  // Set only the new item's quantity
         };
       }
 
     case REMOVE_FROM_CART:
       const filteredItems = state.items.filter((item) => item.sku !== action.payload);
+      const itemToRemove = state.items.find((item) => item.sku === action.payload);
+
+      if (!itemToRemove) {
+        // If the item is not found, return the current state
+        return state;
+      }
       return {
         ...state,
         items: filteredItems,
-        totalQuantity: filteredItems.length > 0 ? filteredItems[filteredItems.length - 1].qty : 0,  // Set the last item's quantity
+        totalQuantity: state.totalQuantity - itemToRemove.qty, // Deduct the removed item's quantity
+
       };
 
     case SET_ERROR:
