@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Sort = () => {
   return (
-    <div>
-      sort
+    <div className="sort_section">
+      Sort By: <strong>Postion</strong>
     </div>
-  )
-}
+  );
+};
 
-export default Sort
+export default Sort;
