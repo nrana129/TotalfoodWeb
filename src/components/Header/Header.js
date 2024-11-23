@@ -21,9 +21,16 @@ const Header = () => {
   const cart = useSelector((state) => state.cart);
 
 
+// Retrieve the existing quantity
+const existingItemIndex = 0; // Assuming this is the correct index
+let existingQuantity = cart.totalQuantity; // Store the current total quantity
 
-  console.log('total quantity' + cart.totalQuantity);
-  console.log('total items' + cart.items.item_id);
+// Update the quantity
+const updatedQuantity = existingQuantity + existingItemIndex; // Add to the existing quantity
+console.log('Total Quantity:', updatedQuantity);
+
+// Use the updated quantity as needed
+cart.totalQuantity = updatedQuantity; // Update the total quantity in the cart object
 
   const location = useLocation();
   const navigate = useNavigate();

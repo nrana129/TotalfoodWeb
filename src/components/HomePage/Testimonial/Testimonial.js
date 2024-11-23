@@ -23,7 +23,7 @@ const Testimonial = () => {
           {
             method: "GET",
             headers: {
-              "x-cors-api-key": "temp_efccee76b63a0822c956c81b6631296a",
+              "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
               "Content-Type": "application/json",
               Authorization:
                 "Bearer eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjIsInV0eXBpZCI6MiwiaWF0IjoxNzIxMzkxNjgwLCJleHAiOjE3MjEzOTUyODB9.KV3NjeUDc0pYsAYRbhEdELKt375JaNrNsFOH9BmvZks",

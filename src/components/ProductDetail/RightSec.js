@@ -57,7 +57,7 @@ const RightSec = ({ productDetail }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-cors-api-key": "temp_efccee76b63a0822c956c81b6631296a",
+          "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
           Authorization: `Bearer ${auth.token}`, // Replace with dynamic token
         },
         body: JSON.stringify(payload),
@@ -139,7 +139,7 @@ const RightSec = ({ productDetail }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-cors-api-key": "temp_efccee76b63a0822c956c81b6631296a",
+          "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
           Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify(payload),
