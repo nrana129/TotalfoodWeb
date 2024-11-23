@@ -50,22 +50,6 @@
       .swiper-button-prev {
         left: 8%;
       }
-
-      .swiper-button-next,
-      .swiper-button-prev {
-        background-repeat: no-repeat;
-        width: 39px;
-        height: 39px;
-        background-color: #fff;
-        border-radius: 50%;
-        background-position: center;
-        background-size: 8px;
-        padding: 0;
-        &:after {
-          font-size: 14px;
-          color: #464646;
-        }
-      }
     }
   }
 

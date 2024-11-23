@@ -56,6 +56,7 @@ const iso = require("./ProductDetails/iso.png");
 const Banner1 = require("./Carousel/BannerImg1.png")
 const Banner2 = require("./Carousel/BannerImg2.png")
 const Banner3 = require("./Carousel/BannerImg3.png")
+const paymentIcon = require("./Payment/online_payment.png")
 
 
 
@@ -110,5 +111,6 @@ export {
   map,
   email,
   phone,
-  fasil
+  fasil,
+  paymentIcon
 };
