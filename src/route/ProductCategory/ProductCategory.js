@@ -7,17 +7,19 @@ import "./ProductCategory.scss";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import Sort from "../../components/Sort/Sort";
 
-const Product = () => {
+const Product = (order) => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [isProductData, setProductData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [categoryBannerImage, setCategoryBannerImage] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   const productListData = () => {
     setLoading(true);
     getData(
-      `/productlisting/category/${categoryId}?sourcecode=ST0008&page=1&pageSize=8&sortBy=as`
+      `/productlisting/category/${categoryId}?sourcecode=ST0008&page=1&pageSize=8&sortBy=${order}`
     )
       .then((response) => {
         if (response?.status === true) {
@@ -35,13 +37,22 @@ const Product = () => {
   };
 
   useEffect(() => {
-    productListData();
-  }, [categoryId]);
+    productListData(sortOrder);
+    // Check if there's a banner image stored in local storage
+    const storedBanner = localStorage?.getItem("categoryBanner");
+    if (storedBanner) {
+      setCategoryBannerImage(storedBanner);
+    }
+  }, [categoryId, sortOrder]);
 
   // Click handler for navigating to product detail
   const handleProductClick = (sku) => {
     console.log("skusku", sku);
     navigate(`/product-detail/${sku}`); // Navigate to product detail page with SKU
+  };
+
+  const handleSortChange = (order) => {
+    setSortOrder(order); // Update sort order state
   };
 
   return (
@@ -50,15 +61,21 @@ const Product = () => {
         <ShopByCategories />
       </div>
       <div className="right_section">
-
-        <div className="category_banner">
-          <img src="" alt="" />
-        </div>
-
+        {categoryBannerImage && (
+          <div className="category_banner">
+            <img src={categoryBannerImage} alt="Category Banner" />
+          </div>
+        )}
 
         <div className="toolbar">
-          <div className="toolbar-amount">toolbar-amount</div>
-          <Sort />
+          <div className="toolbar-amount">
+            {loading
+              ? "Loading..."
+              : isProductData.length > 0
+              ? `${isProductData.length} Choices`
+              : "No products available"}
+          </div>
+          <Sort onSortChange={handleSortChange}  />
         </div>
 
         {loading ? (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TryMust } from "../../assets/images/index";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart); // Get cart data from Redux store
@@ -20,7 +21,9 @@ const Cart = () => {
 
       // Avoid duplicates, only add or update if the item is new
       setCartItems((prevItems) => {
-        const existingItemIndex = prevItems.findIndex((item) => item.sku === newItem.sku);
+        const existingItemIndex = prevItems.findIndex(
+          (item) => item.sku === newItem.sku
+        );
 
         if (existingItemIndex >= 0) {
           // Update the quantity of the existing item
@@ -35,7 +38,12 @@ const Cart = () => {
         return [...prevItems, newItem];
       });
     }
-  }, [cart.newItemName, cart.newItemPrice, cart.newItemSku, cart.totalQuantity]);
+  }, [
+    cart.newItemName,
+    cart.newItemPrice,
+    cart.newItemSku,
+    cart.totalQuantity,
+  ]);
 
   // Handle increment and decrement for item quantity
   const handleQuantityChange = (sku, action) => {
@@ -44,7 +52,10 @@ const Cart = () => {
         item.sku === sku
           ? {
               ...item,
-              quantity: Math.max(1, item.quantity + (action === "increment" ? 1 : -1)),
+              quantity: Math.max(
+                1,
+                item.quantity + (action === "increment" ? 1 : -1)
+              ),
             }
           : item
       )
@@ -52,7 +63,10 @@ const Cart = () => {
   };
 
   // Calculate total price
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="cart_section">
@@ -72,7 +86,12 @@ const Cart = () => {
             <li key={item.sku}>
               <div className="left_section">
                 <div className="product_img">
-                  <img src={TryMust} height="50px" width="200px" alt="Product" />
+                  <img
+                    src={TryMust}
+                    height="50px"
+                    width="200px"
+                    alt="Product"
+                  />
                 </div>
                 <div className="product_left_detail">
                   <h3>{item.name}</h3>
@@ -162,7 +181,7 @@ const Cart = () => {
       </div>
 
       <div className="pay_button">
-        <button>Pay ₹{totalPrice}</button>
+        <Link to="/payment">Pay ₹{totalPrice}</Link>
       </div>
     </div>
   );
