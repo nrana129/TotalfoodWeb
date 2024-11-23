@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 
-const ImageSlider = ({ images }) => {
+const ImageSlider = ({ images, imageLoading }) => {
   const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
 
   return (

@@ -1,13 +1,27 @@
-.custom_product_detail {
-  padding: 0 40px;
+.loading {
+  display: flex;
+  grid-gap: 40px;
+  padding: 50px 40px 0 40px;
+  background: #fff;
   .left_section {
-    width: 55%;
+    width: 62%;
+  }
+  .right_section {
+    width: 38%;
+  }
+}
+.custom_product_detail {
+  padding: 50px 40px 0 40px;
+  background: #fff;
+  .left_section {
+    width: 60%;
     display: flex;
     grid-gap: 40px;
     .swiper-backface-hidden {
       width: calc(100% - 63px);
       order: 2;
       margin: 0;
+      height: max-content;
       img {
         border-radius: 20px;
       }
@@ -29,11 +43,34 @@
           }
         }
       }
+
+      .swiper-button-next {
+        right: 8%;
+      }
+      .swiper-button-prev {
+        left: 8%;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        background-repeat: no-repeat;
+        width: 39px;
+        height: 39px;
+        background-color: #fff;
+        border-radius: 50%;
+        background-position: center;
+        background-size: 8px;
+        padding: 0;
+        &:after {
+          font-size: 14px;
+          color: #464646;
+        }
+      }
     }
   }
 
   .right_section {
-    width: 45%;
+    width: 40%;
     h2 {
       font-size: 22px;
       font-family: "Satoshi-Bold";
@@ -221,6 +258,39 @@
             }
           }
         }
+      }
+    }
+    .trust_priority {
+      margin-top: 40px;
+      h2 {
+        font-size: 16px;
+        margin-top: 0;
+        font-family: "Satoshi-Bold";
+        word-wrap: initial;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          width: 33.33%;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .FoodVideo {
+    margin-bottom: 80px;
+    .container {
+      padding: 4%;
+
+      h2 {
+        display: none;
       }
     }
   }

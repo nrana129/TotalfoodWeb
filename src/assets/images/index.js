@@ -39,7 +39,25 @@ const Gift = require("./account/Gift.png");
 const LocationIcon = require("./account/locationIcon.png");
 const Wallet = require("./account/wallet.png");
 
+const facebook = require("./Img/facebook-app-symbol.png");
+const instagram = require("./Img/instagram.png");
+const youtube = require("./Img/youtube.png");
+
+const map = require("./Img/map.png");
+const email = require("./Img/email.png");
+const phone = require("./Img/phone.png");
+const fasil = require("./Img/fasil.png");
+
+
+const fssai_2 = require("./ProductDetails/fssai_2.png");
+const haccp = require("./ProductDetails/haccp.png");
+const iso = require("./ProductDetails/iso.png");
+
+
 export {
+  fssai_2,
+  haccp,
+  iso,
   Logo,
   Cart,
   Explore,
@@ -79,4 +97,11 @@ export {
   Gift,
   LocationIcon,
   Wallet,
+  facebook,
+  instagram,
+  youtube,
+  map,
+  email,
+  phone,
+  fasil
 };

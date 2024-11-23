@@ -1,8 +1,17 @@
 import React from "react";
 // import Link from "next/link";
 import { Link } from "react-router-dom";
-import './Footer.scss'
-
+import "./Footer.scss";
+import {
+  email,
+  facebook,
+  fasil,
+  instagram,
+  Logo,
+  map,
+  phone,
+  youtube,
+} from "../../assets/images";
 
 const Footer = () => {
   return (
@@ -10,16 +19,17 @@ const Footer = () => {
       <div className="footer_sec">
         <div className="footer_logo">
           <div className="for_desktop">
+            <img src={Logo} alt="" />
             <h4>Give us a Follow</h4>
             <div className="social_icon">
               <Link to="" className="fb">
-                fb
+                <img src={facebook} alt="" />
               </Link>
               <Link to="" className="in">
-                in
+                <img src={instagram} alt="" />
               </Link>
               <Link to="" className="yt">
-                yt
+                <img src={youtube} alt="" />
               </Link>
             </div>
             <div className="copyright">
@@ -31,7 +41,34 @@ const Footer = () => {
           </div>
         </div>
         <div className="foot_content">
-          <div className="left_content">
+          <div className="foot_inner">
+            <h2>Contact Us</h2>
+            <p>
+              Nivritti Foods Pvt. Ltd
+              <br />
+            </p>
+            <p>
+              <span className="foot_icon">
+                <img src={map} alt="map" />
+              </span>
+              <span className="foot_text">
+                9A.J Bose Road Ideal Center, 5th Floor, Kolkata - 700017
+              </span>
+            </p>
+            <p>
+              <span className="foot_icon">
+                <img src={phone} alt="phone" />
+              </span>
+              <span className="foot_text">18002122102</span>
+            </p>
+            <p>
+              <span className="foot_icon">
+                <img src={email} alt="email" />
+              </span>
+              <span className="foot_text">info@Totalfoods.in</span>
+            </p>
+          </div>
+          <div className="foot_inner">
             <h2>About Total Foods</h2>
             <ul>
               <li>
@@ -48,7 +85,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="mid_content">
+          <div className="foot_inner">
             <h2>Useful Links</h2>
             <ul>
               <li>
@@ -65,17 +102,10 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="right_content">
-            <h2>Contact Us</h2>
-            <p>
-              Nivritti Foods Pvt. Ltd
-              <br />
-              9A.J Bose Road Ideal Center, 5th Floor, Kolkata - 700017
-              <br />
-              18002122102
-              <br />
-              info@Totalfoods.in
-            </p>
+          <div className="foot_inner">
+            <h2>Certified</h2>
+            <img src={fasil} alt="" />
+            <p>LN : 12818022000083</p>
           </div>
         </div>
       </div>

@@ -1,16 +1,22 @@
 .product_main {
   display: flex;
+  padding: 0 38px 0 20px;
   .left_section {
-      width: 280px;
-      padding: 0;
-      position: sticky;
-      left: 0;
-      top: 100px;
-      display: block;
-      padding-right: 30px;
-      box-sizing: border-box;
-      max-height: 85vh;
-      overflow-y: scroll;
+    width: 280px;
+    padding: 0;
+    position: sticky;
+    left: 0;
+    top: 100px;
+    display: block;
+    padding-right: 30px;
+    box-sizing: border-box;
+    max-height: 85vh;
+    overflow-y: scroll;
+    .categories_loader {
+      display: flex;
+      margin: 0;
+      flex-direction: column;
+    }
     .ShopByCategories {
       .container {
         padding: 0;
@@ -46,6 +52,16 @@
   }
   .right_section {
     width: calc(100% - 280px);
+    .category_banner{
+      img{
+        width: 100%;
+      }
+    }
+    .toolbar{
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
     .product_card_main {
       display: flex;
       flex-wrap: wrap;

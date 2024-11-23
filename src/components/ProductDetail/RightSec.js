@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Tabbing from "./Tabbing";
-import { addToCart, removeFromCart, setError } from '../../store/actions/cartActions';
+import {
+  addToCart,
+  removeFromCart,
+  setError,
+} from "../../store/actions/cartActions";
 import { useSelector, useDispatch } from "react-redux";
-
+import { fssai_2, haccp, iso } from "../../assets/images/index";
 
 const RightSec = ({ productDetail }) => {
   const auth = useSelector((state) => state.auth);
-  
+
   const dispatch = useDispatch(); // For dispatching actions to the store
   const [addToCartData, setAddToCartData] = useState(null);
   const [error, setError] = useState(null);
@@ -20,16 +24,17 @@ const RightSec = ({ productDetail }) => {
   };
 
   const handleQuantityChange = (type) => {
-    setQuantity((prevQuantity) => (type === "increment" ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)));
+    setQuantity((prevQuantity) =>
+      type === "increment" ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)
+    );
   };
 
- // Function to save cart data into localStorage
- const saveCartToLocalStorage = (cartItem) => {
-  const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
-  currentCart.push(cartItem);
-  localStorage.setItem("cartItems", JSON.stringify(currentCart));
-};
-
+  // Function to save cart data into localStorage
+  const saveCartToLocalStorage = (cartItem) => {
+    const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    currentCart.push(cartItem);
+    localStorage.setItem("cartItems", JSON.stringify(currentCart));
+  };
 
   const handleAddToCart = async () => {
     if (!auth.token || !auth.quoteId || !productDetail[0]?.sku) {
@@ -37,7 +42,8 @@ const RightSec = ({ productDetail }) => {
       return;
     }
 
-    const apiUrl = "https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/carts/mine/items";
+    const apiUrl =
+      "https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/carts/mine/items";
     const payload = {
       cartItem: {
         sku: selectedSku || productDetail[0]?.sku, // Use the selected SKU for configurable products
@@ -81,8 +87,6 @@ const RightSec = ({ productDetail }) => {
         saveCartToLocalStorage(responseData);
 
         setError(null);
-
-        
       }
     } catch (error) {
       console.error("Error while adding product to cart:", error);
@@ -94,11 +98,14 @@ const RightSec = ({ productDetail }) => {
 
   const handleAddToCartConfigurable = async () => {
     if (!auth.token || !auth.quoteId || !selectedSku) {
-      setError("Missing required data to add the configurable product to the cart.");
+      setError(
+        "Missing required data to add the configurable product to the cart."
+      );
       return;
     }
 
-    const apiUrl = "https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/carts/mine/items";
+    const apiUrl =
+      "https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/carts/mine/items";
 
     // Find the selected option from the product details
     const selectedOption = productDetail[0]?.options?.find(
@@ -152,7 +159,10 @@ const RightSec = ({ productDetail }) => {
         setError("Failed to add product to cart. Please try again.");
       } else {
         const responseData = await response.json();
-        console.log("Configurable product added to cart successfully:", responseData);
+        console.log(
+          "Configurable product added to cart successfully:",
+          responseData
+        );
         // Dispatch addToCart action to update the store
         dispatch(addToCart(responseData));
 
@@ -163,7 +173,6 @@ const RightSec = ({ productDetail }) => {
         saveCartToLocalStorage(responseData);
 
         setError(null);
-
       }
     } catch (error) {
       console.error("Error while adding configurable product to cart:", error);
@@ -176,7 +185,10 @@ const RightSec = ({ productDetail }) => {
   return (
     <div className="right_section">
       <h2>{productDetail[0]?.name}</h2>
-      <p>Nine months if stored & transported at or below minus 18°C from date of manufacture.</p>
+      <p>
+        Nine months if stored & transported at or below minus 18°C from date of
+        manufacture.
+      </p>
 
       <div className="featured_detail">
         <ul>
@@ -206,7 +218,10 @@ const RightSec = ({ productDetail }) => {
             >
               {productDetail[0]?.options?.map((option, index) => (
                 <option key={index} value={option.sku}>
-                  {option.name} - {option.special_price ? `Special Price: ₹${option.special_price}` : `Price: ₹${option.price}`}
+                  {option.name} -{" "}
+                  {option.special_price
+                    ? `Special Price: ₹${option.special_price}`
+                    : `Price: ₹${option.price}`}
                 </option>
               ))}
             </select>
@@ -221,24 +236,21 @@ const RightSec = ({ productDetail }) => {
           </div>
         </div>
 
-        
         {productDetail[0]?.product_type === "simple" && (
-           <div className="left_section">
-           <button onClick={handleAddToCart} disabled={loading}>
-             {loading ? "Adding..." : "Add to Cart"}
-           </button>
-         </div>
+          <div className="left_section">
+            <button onClick={handleAddToCart} disabled={loading}>
+              {loading ? "Adding..." : "Add to Cart"}
+            </button>
+          </div>
         )}
 
         {productDetail[0]?.product_type === "configurable" && (
-           <div className="left_section">
-           <button onClick={handleAddToCartConfigurable} disabled={loading}>
-             {loading ? "Adding..." : "Add to Cart"}
-           </button>
-         </div>
+          <div className="left_section">
+            <button onClick={handleAddToCartConfigurable} disabled={loading}>
+              {loading ? "Adding..." : "Add to Cart"}
+            </button>
+          </div>
         )}
-
-     
       </div>
 
       {error && <p className="error_message">{error}</p>}
@@ -265,9 +277,33 @@ const RightSec = ({ productDetail }) => {
         </div>
 
         <ul className="tabbingSec">
-          <Tabbing title="Description" content={productDetail[0]?.description} />
-          <Tabbing title="Storage Instructions" content={productDetail[0]?.storage_instructions} />
-          <Tabbing title="Marketed By" content={productDetail[0]?.manufacturing_details} />
+          <Tabbing
+            title="Description"
+            content={productDetail[0]?.description}
+          />
+          <Tabbing
+            title="Storage Instructions"
+            content={productDetail[0]?.storage_instructions}
+          />
+          <Tabbing
+            title="Marketed By"
+            content={productDetail[0]?.manufacturing_details}
+          />
+        </ul>
+      </div>
+
+      <div className="trust_priority">
+        <h2>Your Trust, Our Priority</h2>
+        <ul>
+          <li>
+            <img src={iso} alt="" />
+          </li>
+          <li>
+            <img src={haccp} alt="" />
+          </li>
+          <li>
+            <img src={fssai_2} alt="" />
+          </li>
         </ul>
       </div>
     </div>

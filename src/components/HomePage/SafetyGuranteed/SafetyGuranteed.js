@@ -2,7 +2,7 @@ import React from "react";
 
 const SafetyGuranteed = () => {
   return (
-    <div className="mt-10">
+    <div className="mt-16">
       <div className="container">
         <div className="certificate_section section_space">
           <h3>Total Foods Safety Guranteed</h3>
