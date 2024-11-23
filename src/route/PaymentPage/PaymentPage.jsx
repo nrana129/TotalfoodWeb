@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Logo, paymentIcon } from "../../assets/images";
 import "./PaymentPage.scss";
+import { Link } from "react-router-dom";
 
 const PaymentPage = () => {
   // State to track active payment method
@@ -27,7 +28,9 @@ const PaymentPage = () => {
         <div className="innerPayment">
           {/* Left Section */}
           <div className="left_section">
-            <img src={Logo} alt="Company Logo" className="payPageLogo" />
+            <Link to="/">
+              <img src={Logo} alt="Company Logo" className="payPageLogo" />
+            </Link>
             <ul>
               <li
                 className={activeMethod === "razorpay" ? "active" : ""}
