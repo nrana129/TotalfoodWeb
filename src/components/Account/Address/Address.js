@@ -5,8 +5,9 @@ import "./Address.scss"
 
 const Address = () => {
   return (
+    <div className="account_main">
     <div className="container">
-      <main className="flex gap-10 my-10 address_book">
+      <main className="flex gap-10 address_book">
         <div className="left_section">
           <Tabs />
         </div>
@@ -17,6 +18,7 @@ const Address = () => {
           </ul>
         </div>
       </main>
+    </div>
     </div>
   );
 };

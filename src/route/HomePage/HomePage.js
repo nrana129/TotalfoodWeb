@@ -17,11 +17,11 @@ const HomePage = () => {
   const auth = useSelector((state) => state.auth);
   return (
     <div className="homePage">
-      <div>
+      {/* <div>
         <p>Customer ID: {auth.customerId}</p>
         <p>Quote ID: {auth.quoteId}</p>
         <p>Token: {auth.token}</p>
-      </div>
+      </div> */}
 
       <Carousel />
       <div className="homeShopByCategories">

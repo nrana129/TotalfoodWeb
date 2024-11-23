@@ -8,7 +8,7 @@
   background: #fffee6;
   z-index: 999;
   .container {
-    padding: 0 2%!important;
+    padding: 0 2% !important;
     .main {
       .left_section {
         align-items: center;
@@ -95,6 +95,19 @@
                 background: #fff;
                 margin: 0;
 
+                &:after{
+                  content: "";
+                  background-image: url("../../assets/images/Header/white-wave.svg");
+                  position: absolute;
+                  bottom: -27px;
+                  left: 0;
+                  right: 0;
+                  width: 100%;
+                  height: 30px;
+                  z-index: 999;
+                  background-size: cover;
+                  background-position: bottom;
+                }
                 h2 {
                   display: none;
                 }
@@ -104,17 +117,39 @@
                 }
 
                 ul {
+                  display: flex;
+                  flex-wrap: wrap;
                   grid-gap: 20px;
                   padding-top: 40px;
+                  justify-content: center;
+                  width: 100%;
+                  margin: 0;
+                  position: relative;
+                  z-index: 999;
+                  padding: 2% 4%;
+                  grid-gap: 30px;
+                  box-sizing: border-box;
+                  background: #fff;
+                  flex-wrap: wrap;
 
                   li {
+                    width: 16%;
                     margin: 0;
                     text-align: center;
-                    width: 15.48%;
+                    width: 11.48%;
 
+                    h3 {
+                      height: 20px;
+                      line-height: 20px;
+                      margin: 0;
+                      color: #000000;
+                      font-size: 13px;
+                      font-family: "Satoshi-Bold";
+                      font-weight: normal;
+                    }
                     span {
                       img {
-                        width: 180px;
+                        width: 135px;
                         margin: 0 auto;
                       }
 
