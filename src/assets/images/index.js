@@ -49,7 +49,15 @@ const phone = require("./Img/phone.png");
 const fasil = require("./Img/fasil.png");
 
 
+const fssai_2 = require("./ProductDetails/fssai_2.png");
+const haccp = require("./ProductDetails/haccp.png");
+const iso = require("./ProductDetails/iso.png");
+
+
 export {
+  fssai_2,
+  haccp,
+  iso,
   Logo,
   Cart,
   Explore,

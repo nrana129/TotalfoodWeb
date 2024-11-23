@@ -7,7 +7,12 @@ const Products = ({ resp, setLoading, onProductClick }) => {
     <div className="product_card_main">
       {resp &&
         resp.map((product, index) => {
-          return <ProductCard product={product} handleProductClick={onProductClick}/>;
+          return (
+            <ProductCard
+              product={product}
+              handleProductClick={onProductClick}
+            />
+          );
         })}
     </div>
   );

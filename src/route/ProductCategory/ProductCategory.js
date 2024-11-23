@@ -5,6 +5,7 @@ import Products from "../../components/ProductCard/Products";
 import { getData } from "../../utils/api";
 import "./ProductCategory.scss";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
+import Sort from "../../components/Sort/Sort";
 
 const Product = () => {
   const { categoryId } = useParams();
@@ -39,7 +40,7 @@ const Product = () => {
 
   // Click handler for navigating to product detail
   const handleProductClick = (sku) => {
-    console.log("skusku", sku)
+    console.log("skusku", sku);
     navigate(`/product-detail/${sku}`); // Navigate to product detail page with SKU
   };
 
@@ -49,6 +50,17 @@ const Product = () => {
         <ShopByCategories />
       </div>
       <div className="right_section">
+
+        <div className="category_banner">
+          <img src="" alt="" />
+        </div>
+
+
+        <div className="toolbar">
+          <div className="toolbar-amount">toolbar-amount</div>
+          <Sort />
+        </div>
+
         {loading ? (
           <div className="loading_spinner">
             <ShimmerSimpleGallery card imageHeight={300} />

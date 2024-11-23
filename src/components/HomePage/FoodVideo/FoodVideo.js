@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../../../utils/api";
+import { ShimmerThumbnail } from "react-shimmer-effects";
+import "./FoodVideo.scss"
 
 const FoodVideo = () => {
   const [videoData, setVideoData] = useState(null);
@@ -7,6 +9,7 @@ const FoodVideo = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to control popup
 
   const fetchVideoData = () => {
+    setLoading(true);
     getData("staticblock/brandvideo/video_banner")
       .then((response) => {
         if (response?.status === true) {
@@ -26,7 +29,11 @@ const FoodVideo = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="videoLoaderMain">
+        <ShimmerThumbnail height={626} rounded className="videoLoader"/>
+      </div>
+    );
   }
 
   if (!videoData) {
