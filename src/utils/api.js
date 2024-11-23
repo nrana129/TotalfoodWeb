@@ -9,7 +9,7 @@ const BASE_URL =
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
-    "x-cors-api-key": "temp_45c4dd59e8c6be185fd4839391060d5a",
+    "x-cors-api-key": "temp_09264bf258ccb696446ca4ff8f4e8143",
     "Content-Type": "application/json",
   },
   timeout: 20000,

@@ -1,0 +1,24 @@
+
+.banner_loader {
+    display: flex;
+    grid-gap: 20px;
+    justify-content: center;
+    div {
+      flex-shrink: 0;
+      height: 273px;
+      width: 630px;
+      border-radius: 30px;
+    }
+  }
+
+
+
+.banner_carousel {
+  .swiper-slide {
+    img {
+      //   width: 100%;
+      border-radius: 30px;
+      //   height: 423px;
+    }
+  }
+}

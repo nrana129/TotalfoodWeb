@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Sdata from "./Sdata";
-// import img from "next/img";
 import { Link } from "react-router-dom";
 import { getData } from "../../../utils/api";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const TrendingDelights = () => {
   const [trendingData, setTrendingData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
-
   const fetchTrendingData = () => {
+    setLoading(true);
     getData("/trending") // API endpoint
       .then((response) => {
-        console.log("responseNaveen", response)
         if (response?.status === true) {
           setTrendingData(response.categories); // Set the data in state
-
         } else {
           setError("No data available");
         }
@@ -31,12 +27,9 @@ const TrendingDelights = () => {
       });
   };
 
-  console.log("trendingDatatrendingData", trendingData);
   useEffect(() => {
     fetchTrendingData();
   }, []);
-
-  
 
   trendingData.forEach((category) => {
     category.categoryName = category.name.toLowerCase().replace(/\s+/g, "-");
@@ -48,18 +41,33 @@ const TrendingDelights = () => {
         <h3>
           Trending Delights<span className="icon-smile"></span>
         </h3>
-        <ul className="flex flex-wrap">
-          {trendingData.map((data) => (
-            <li key={data.id} className="w-1/4 px-3">
-              <Link to={`${data.categoryName}/${data.id}`}>
-                <span className="product_img">
-                  <img src={data.image} alt={`Categories-${data.id}`} />
-                </span>
-                <h3>{data.name}</h3>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {loading ? (
+          <ul className="flex flex-wrap">
+            {/* Generate dynamic shimmer effects */}
+            {Array.from({ length: trendingData.length || 8 }).map(
+              (_, index) => (
+                <li key={index} className="w-1/4 px-3">
+                  <ShimmerThumbnail height={305} rounded />
+                </li>
+              )
+            )}
+          </ul>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          <ul className="flex flex-wrap">
+            {trendingData.map((data) => (
+              <li key={data.id} className="w-1/4 px-3">
+                <Link to={`${data.categoryName}/${data.id}`}>
+                  <span className="product_img">
+                    <img src={data.image} alt={`Categories-${data.id}`} />
+                  </span>
+                  <h3>{data.name}</h3>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
