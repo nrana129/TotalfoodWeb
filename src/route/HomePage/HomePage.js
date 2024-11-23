@@ -14,18 +14,14 @@ import "./HomePage.scss";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
-
   const auth = useSelector((state) => state.auth);
   return (
-    <div>
-
-    <div>
-      <p>Customer ID: {auth.customerId}</p>
-      <p>Quote ID: {auth.quoteId}</p>
-      <p>Token: {auth.token}</p>
-    </div>
-
-
+    <div className="homePage">
+      <div>
+        <p>Customer ID: {auth.customerId}</p>
+        <p>Quote ID: {auth.quoteId}</p>
+        <p>Token: {auth.token}</p>
+      </div>
 
       <Carousel />
       <div className="homeShopByCategories">
