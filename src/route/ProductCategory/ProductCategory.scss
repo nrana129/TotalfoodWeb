@@ -1,6 +1,7 @@
 .product_main {
   display: flex;
   padding: 0 38px 0 20px;
+  background-color: #fff;
   .left_section {
     width: 280px;
     padding: 0;
@@ -13,9 +14,27 @@
     max-height: 85vh;
     overflow-y: scroll;
     .categories_loader {
-      display: flex;
-      margin: 0;
-      flex-direction: column;
+      padding-top: 45px;
+      padding-left: 20px;
+      .loader_circluar {
+        display: flex;
+        align-items: center;
+        grid-gap: 25px;
+        margin-bottom: 20px;
+        .circluar {
+          border-radius: 100px;
+          width: 50px !important;
+          height: 50px !important;
+          margin: 0;
+        }
+        .text_line {
+          width: 70%;
+          margin: 0;
+          .shimmer-text-line {
+            height: 15px !important;
+          }
+        }
+      }
     }
     .ShopByCategories {
       .container {
@@ -52,12 +71,51 @@
   }
   .right_section {
     width: calc(100% - 280px);
-    .category_banner{
-      img{
+    padding-left: 15px;
+    .toolbar {
+      .toolbar-amount {
+        position: static;
+        border: 1px solid #f6f6f6;
+        padding: 13px 20px;
+        border-radius: 13px;
+        background: #f6f6f6;
+        font-family: "Satoshi-Medium";
+        display: flex;
+        font-size: 13px;
+      }
+      .sort_section {
+        border: 1px solid #f6f6f6;
+        padding: 13px 20px;
+        border-radius: 13px;
+        background: #f6f6f6;
+        position: static;
+        width: max-content !important;
+        margin: 0 0 0 auto !important;
+        font-family: "Satoshi-Medium";
+        font-size: 13px;
+      }
+    }
+    .loading_spinner {
+      border: 0.5px solid #e3e3e3;
+      padding: 0;
+      .shimmer-card {
+        box-shadow: none;
+        padding: 0;
+        .grid {
+          grid-gap: 0;
+          > div {
+            border: 0.5px solid #e3e3e3;
+            padding: 20px;
+          }
+        }
+      }
+    }
+    .category_banner {
+      img {
         width: 100%;
       }
     }
-    .toolbar{
+    .toolbar {
       display: flex;
       justify-content: space-between;
       margin: 20px 0;
@@ -65,6 +123,7 @@
     .product_card_main {
       display: flex;
       flex-wrap: wrap;
+      border: 0.5px solid #e3e3e3;
     }
   }
 }

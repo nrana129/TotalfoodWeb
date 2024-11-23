@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import img from "next/img";
 import Sdata from "./Sdata";
 import { Outlet, Link } from "react-router-dom";
-import { ShimmerButton } from "react-shimmer-effects";
+import { ShimmerCircularImage, ShimmerText } from "react-shimmer-effects";
 import { getData } from "../../../utils/api";
 
 const ShopByCategories = ({ title, description }) => {
@@ -41,7 +41,10 @@ const ShopByCategories = ({ title, description }) => {
     return (
       <div className="categories_loader">
         {divs.map((_, index) => (
-          <ShimmerButton size="md" />
+          <div className="loader_circluar">
+            <ShimmerCircularImage className="circluar" />
+            <ShimmerText line={1} height={20} className="text_line"/>
+          </div>
         ))}
       </div>
     );

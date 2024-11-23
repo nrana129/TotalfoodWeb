@@ -54,6 +54,8 @@ const haccp = require("./ProductDetails/haccp.png");
 const iso = require("./ProductDetails/iso.png");
 
 
+
+
 export {
   fssai_2,
   haccp,
