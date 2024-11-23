@@ -4,7 +4,7 @@ import ListCoupon from "./ListCoupon";
 
 const AvailableCoupon = () => {
   return (
-    <div>
+    <div className="account_main">
       <div className="container">
         <main className="account AvailableCoupon">
           <div className="left_section">
@@ -13,7 +13,7 @@ const AvailableCoupon = () => {
           <div className="right_section">
             <h2>available coupon</h2>
             <ul>
-                <ListCoupon/>
+              <ListCoupon />
             </ul>
           </div>
         </main>

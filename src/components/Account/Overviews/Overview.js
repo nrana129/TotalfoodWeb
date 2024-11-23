@@ -6,6 +6,7 @@ import styles from "./Overview.module.css";
 import RightBanner from "./RightBanner/RightBanner";
 import { getData } from "../../../utils/api";
 import { useSelector } from "react-redux";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const Overview = () => {
   const [overview, setOverview] = useState(null); // Default is null
@@ -16,11 +17,11 @@ const Overview = () => {
   const fetchOrderData = () => {
     const token = auth.token;
 
-    if (!token) {
-      setError("No authentication token found");
-      setLoading(false);
-      return;
-    }
+    // if (!token) {
+    //   setError("No authentication token found");
+    //   setLoading(false);
+    //   return;
+    // }
 
     getData("customers/me", token)
       .then((response) => {
@@ -44,7 +45,28 @@ const Overview = () => {
     fetchOrderData();
   }, [auth.token]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className={styles.overviewMainLoader}>
+        <div className="overviewTopLoader">
+          <ShimmerThumbnail height={20} rounded />
+          <ShimmerThumbnail height={80} rounded />
+          <div className={styles.overviewInnerLoader}>
+            <ShimmerThumbnail height={62} rounded className={styles.overviewItem} />
+            <ShimmerThumbnail height={62} rounded className={styles.overviewItem} />
+            <ShimmerThumbnail height={62} rounded className={styles.overviewItem} />
+          </div>
+        </div>
+        <div className={styles.overviewBottomLoader}>
+          <ShimmerThumbnail height={20} rounded />
+          <div className={styles.overviewInnerLoader}>
+            <ShimmerThumbnail height={58} rounded className={styles.overviewItem} />
+            <ShimmerThumbnail height={58} rounded className={styles.overviewItem} />
+            <ShimmerThumbnail height={58} rounded className={styles.overviewItem} />
+          </div>
+        </div>
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   const { firstname, lastname, email, addresses } = overview || {};
@@ -77,7 +99,7 @@ const Overview = () => {
           </div>
         </div>
         <div className={styles.bottom_section}>
-          <ul className="flex gap-20">
+          <ul className="flex gap-10">
             <OverviewTabs
               title="My Order"
               description="Check Order Status"
