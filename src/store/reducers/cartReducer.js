@@ -19,7 +19,7 @@ const cartReducer = (state = initialState, action) => {
       if (existingItemIndex >= 0) {
         // Update quantity if the item already exists in the cart
         const updatedItems = [...state.items];
-        console.log('new quantity' + newItem.qty);
+        
         updatedItems[existingItemIndex].qty += newItem.qty;
         
         // Set the total quantity to the last added item's quantity

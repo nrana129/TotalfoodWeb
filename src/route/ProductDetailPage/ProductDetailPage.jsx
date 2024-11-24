@@ -17,12 +17,14 @@ const ProductDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   // Fetch product details based on SKU
   const fetchProductDetail = () => {
     setLoading(true); // Start loading
     getData(`/product/details/${sku}?sourcecode=ST0008`) // Dynamic API endpoint
       .then((response) => {
         if (response?.status === true) {
+      
           setProductDetail(response.data); // Set the data in state
           setError(null); // Clear previous errors
         } else {
@@ -37,7 +39,7 @@ const ProductDetailPage = () => {
         setLoading(false); // Stop loading
       });
   };
-
+ 
   // Fetch product details on component mount or SKU change
   useEffect(() => {
     fetchProductDetail();

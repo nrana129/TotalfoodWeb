@@ -1,41 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { TryMust } from "../../assets/images/index";
 import { useSelector } from "react-redux";
+import { TryMust } from "../../assets/images/index";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart); // Get cart data from Redux store
   const [cartItems, setCartItems] = useState([]);
 
-  console.log("cart.totalQuantity: ", cart.totalQuantity);
+  // Fetch product image from API using SKU
+  const fetchProductImage = async (sku) => {
+    const apiUrl = `https://proxy.cors.sh/https://totalfood.greenhonchos.in/rest/V1/getproductimage/${sku}`;
+    try {
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-cors-api-key": "temp_bff681b977c3dfa62725fa465683420b",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch product image for SKU: ${sku}`);
+      }
+
+      const data = await response.json();
+      return data?.[0]?.product_image_url || "";
+    } catch (error) {
+      console.error(error);
+      return ""; // Return an empty string if API call fails
+    }
+  };
 
   // Sync cart data from Redux store to local state
   useEffect(() => {
-    if (cart && cart.newItemName) {
-      const newItem = {
-        name: cart.newItemName,
-        price: cart.newItemPrice,
-        sku: cart.newItemSku,
-        quantity: cart.totalQuantity || 1, // Default quantity is 1
-      };
+    const syncCart = async () => {
+      if (cart && cart.newItemName) {
+        const newItem = {
+          name: cart.newItemName,
+          price: cart.newItemPrice,
+          sku: cart.newItemSku,
+          quantity: cart.totalQuantity || 1, // Default quantity is 1
+        };
 
-      // Avoid duplicates, only add or update if the item is new
-      setCartItems((prevItems) => {
-        const existingItemIndex = prevItems.findIndex((item) => item.sku === newItem.sku);
+        // Fetch the product image
+        const imageUrl = await fetchProductImage(newItem.sku);
+        newItem.image = imageUrl;
 
-        if (existingItemIndex >= 0) {
-          // Update the quantity of the existing item
-          return prevItems.map((item, index) =>
-            index === existingItemIndex
-              ? { ...item, quantity: item.quantity + newItem.quantity }
-              : item
-          );
-        }
+        // Avoid duplicates, only add if the item is new
+        setCartItems((prevItems) => {
+          const isDuplicate = prevItems.some((item) => item.sku === newItem.sku);
+          if (isDuplicate) {
+            return prevItems.map((item) =>
+              item.sku === newItem.sku
+                ? { ...item, quantity: newItem.quantity } // Update quantity if item exists
+                : item
+            );
+          }
+          return [...prevItems, newItem];
+        });
+      }
+    };
 
-        // Add new item to the cart
-        return [...prevItems, newItem];
-      });
-    }
-  }, [cart.newItemName, cart.newItemPrice, cart.newItemSku, cart.totalQuantity]);
+    syncCart();
+  }, [cart]);
 
   // Handle increment and decrement for item quantity
   const handleQuantityChange = (sku, action) => {
@@ -52,7 +78,10 @@ const Cart = () => {
   };
 
   // Calculate total price
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="cart_section">
@@ -72,7 +101,10 @@ const Cart = () => {
             <li key={item.sku}>
               <div className="left_section">
                 <div className="product_img">
-                  <img src={TryMust} height="50px" width="200px" alt="Product" />
+                  <img
+                    src={item.image || "default-image.jpg"} // Fallback image
+                    alt="Product" height="10px" width="200px"
+                  />
                 </div>
                 <div className="product_left_detail">
                   <h3>{item.name}</h3>
