@@ -4,9 +4,8 @@
   grid-gap: 20px;
   align-content: center;
 }
-.overview_inner{
+.overview_inner {
   width: calc(100% - 318px);
-  
 }
 .overview_section h2 {
   font-size: 16px;
@@ -50,8 +49,8 @@
   margin-bottom: 4px;
   text-transform: capitalize;
 }
-.bottom_section{
-    margin-top: 20px;
+.bottom_section {
+  margin-top: 20px;
 }
 
 .mail_id {
@@ -91,4 +90,20 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+}
+.overviewMainLoader{
+  width: calc(100% - 318px);
+}
+.overviewInnerLoader,
+.overviewInnerLoader{
+  display: flex;
+  gap: 20px;
+}
+
+.overviewInnerLoader > div,
+.overviewInnerLoader > div{
+  width: 33%;
+}
+.overviewBottomLoader{
+  margin-top: 30px;
 }

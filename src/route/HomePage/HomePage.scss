@@ -1,4 +1,32 @@
 .homeShopByCategories {
+  .categories_loader {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 6% !important;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    grid-row-gap: 40px;
+    justify-content: center;
+    .loader_circluar {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 30px;
+      .circluar {
+        width: 145px !important;
+        height: 145px !important;
+      }
+      .text_line {
+        width: 50%;
+        margin: 0 auto;
+
+        .shimmer-text-line {
+          height: 15px;
+        }
+      }
+    }
+  }
   .ShopByCategories {
     h2 {
       color: #000000;
@@ -55,72 +83,35 @@
   }
 }
 
-.banner_carousel {
-  img {
-    width: 100%;
-    height: max-content;
-    border-radius: 30px;
-  }
-}
-
-.banner_loader {
-  display: flex;
-  grid-gap: 20px;
-  justify-content: center;
-  div {
-    flex-shrink: 0;
-    height: 177px;
-    width: 630px;
-    border-radius: 30px;
-    // animation-duration: 2.2s;
-    // animation-fill-mode: forwards;
-    // animation-iteration-count: infinite;
-    // animation-name: shimmer;
-    // animation-timing-function: linear;
-    // background: #ddd;
-    // background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
-    // background-size: 1200px 100%;
-
-    // @keyframes shimmer{
-    //   0%{
-    //     background-position: -1200px 0;
-    //   }
-    //   100%{
-    //     background-position: 1200px 0;
-    //   }
-    // }
-  }
-}
-
-.categories_loader {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 50px;
-  justify-content: center;
-  margin-top: 120px;
-  padding: 0 30px;
-  div {
-    width: 177px;
-    height: 177px;
-    margin: 0 auto;
-    animation-duration: 2.2s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: shimmer;
-    animation-timing-function: linear;
-    background: #ddd;
-    background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
-    background-size: 1200px 100%;
-    @keyframes shimmer {
-      0% {
-        background-position: -1200px 0;
-      }
-      100% {
-        background-position: 1200px 0;
-      }
-    }
-  }
-}
+// .categories_loader {
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr);
+//   grid-gap: 50px;
+//   justify-content: center;
+//   margin-top: 120px;
+//   padding: 0 30px;
+//   div {
+//     width: 177px;
+//     height: 177px;
+//     margin: 0 auto;
+//     animation-duration: 2.2s;
+//     animation-fill-mode: forwards;
+//     animation-iteration-count: infinite;
+//     animation-name: shimmer;
+//     animation-timing-function: linear;
+//     background: #ddd;
+//     background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+//     background-size: 1200px 100%;
+//     @keyframes shimmer {
+//       0% {
+//         background-position: -1200px 0;
+//       }
+//       100% {
+//         background-position: 1200px 0;
+//       }
+//     }
+//   }
+// }
 
 .TrendingDelights {
   ul {
@@ -197,70 +188,12 @@
   }
 }
 
-.certificate_section {
-  width: 100%;
-  box-sizing: border-box;
-
-  h3 {
-    color: #000000;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 0 20px 0;
-    font-family: "Satoshi-Bold";
-  }
-
-  ul {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    border: 1px solid #ececec;
-    border-radius: 17px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px 30px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    overflow: hidden;
-
-    li {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
-      margin: 0 1%;
-      width: 22%;
-      position: relative;
-      justify-content: center;
-
-      img {
-        width: 34px;
-      }
-
-      span {
-        padding: 10px 60px;
-        display: block;
-        font-size: 15px;
-        color: #000000;
-        font-family: "Satoshi-Bold";
-      }
-
-      &:after {
-        content: "";
-        width: 1px;
-        height: 40px;
-        background: #ececec;
-        position: absolute;
-        right: 0;
-      }
-
-      &:last-child {
-        &::after {
-          display: none;
-        }
-      }
-    }
+.testimonial_loader {
+  display: flex;
+  grid-gap: 33px;
+  margin-top: 90px;
+  > div {
+    width: 33%;
   }
 }
 
@@ -273,8 +206,8 @@
     font-size: 22px;
     font-weight: 600;
     text-align: center;
-    margin: 0 0 20px 0;
-    font-family: "Satoshi-Bold";
+    margin: 0 0 30px 0;
+    font-family: "Satoshi-Medium";
   }
   .testimonial_slider {
     .card {
@@ -292,7 +225,7 @@
         align-items: center;
         margin-bottom: 20px;
 
-        .cirle_first_name {
+        .circle_first_name {
           background: #92d0f1;
           width: 32px;
           height: 32px;
@@ -314,7 +247,7 @@
           .bg-click {
             width: 14px;
             height: 14px;
-            //   background: url("../images/green-click.svg");
+            background: url("../../assets/images/Img/green-click.svg");
             display: inline-block;
             background-repeat: no-repeat;
           }
@@ -329,9 +262,7 @@
 
           &::before {
             color: #ffe5ae;
-            font-family: "luma-icons";
             font-size: 15px;
-            content: "" "";
             content: "\e605";
           }
 
@@ -343,7 +274,7 @@
         }
       }
 
-      .customer_discriptions {
+      .customer_descriptions {
         -webkit-box-orient: vertical;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -355,6 +286,7 @@
           font-size: 12px;
           color: #595454;
           font-family: "Satoshi-Bold";
+          line-height: 20px;
         }
       }
 
@@ -365,6 +297,7 @@
           img {
             width: 48px;
             height: auto;
+            border-radius: 10px;
           }
         }
       }
@@ -674,5 +607,11 @@
     // @media @for-phone {
     //   display: none;
     // }
+  }
+}
+
+.GetUptoBanner {
+  img {
+    width: 100%;
   }
 }

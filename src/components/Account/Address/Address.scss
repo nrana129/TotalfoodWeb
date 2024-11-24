@@ -1,6 +1,6 @@
 .address_book {
   .right_section {
-    width: 65%;
+    width: 60%;
     .all_address {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -48,6 +48,44 @@
             font-family: "Satoshi-Bold";
             font-size: 13px;
           }
+        }
+      }
+    }
+
+    .addAddress_header {
+      display: flex;
+      justify-content: space-between;
+      h2{
+        font-size: 16px;
+        font-family: "Satoshi-Bold";
+        margin: 0;
+        display: block;
+        margin-bottom: 20px;
+        text-transform: capitalize;
+        margin-top: 10px;
+      }
+      button {
+        background: transparent;
+        color: #000;
+        width: max-content;
+        border-radius: 10px !important;
+        font-size: 14px !important;
+        border: 0;
+        height: 33px;
+        font-family: "Satoshi-Medium";
+        display: flex;
+        align-items: center;
+        grid-gap: 6px;
+        &::before {
+          content: "+";
+          width: 20px;
+          height: 20px;
+          background: #1d2b95;
+          border-radius: 50%;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }

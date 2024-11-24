@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getData } from "../../../utils/api";
 import { useSelector } from "react-redux";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const ListCoupon = () => {
   const [activeCoupons, setActiveCoupons] = useState([]);
@@ -52,7 +53,11 @@ const ListCoupon = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div>
+        <ShimmerThumbnail height={120} rounded />
+      </div>
+    );
   }
 
   if (error) {

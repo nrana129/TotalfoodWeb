@@ -1,0 +1,68 @@
+
+.certificate_section {
+    width: 100%;
+    box-sizing: border-box;
+  
+    h3 {
+      color: #000000;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 0 20px 0;
+      font-family: "Satoshi-Bold";
+    }
+  
+    ul {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      border: 1px solid #ececec;
+      border-radius: 17px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 30px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      overflow: hidden;
+  
+      li {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        margin: 0 1%;
+        width: 22%;
+        position: relative;
+        justify-content: center;
+  
+        img {
+          width: 34px;
+        }
+  
+        span {
+          padding: 10px 60px;
+          display: block;
+          font-size: 15px;
+          color: #000000;
+          font-family: "Satoshi-Bold";
+          line-height: 22px;
+        }
+  
+        &:after {
+          content: "";
+          width: 1px;
+          height: 40px;
+          background: #ececec;
+          position: absolute;
+          right: 0;
+        }
+  
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }

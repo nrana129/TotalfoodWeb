@@ -15,8 +15,8 @@ const CatImg7 = require("./ShopByCategories/Parathas_1.png");
 const CatImg8 = require("./ShopByCategories/Veg-delights.png");
 const CatImg9 = require("./ShopByCategories/Eggs_5_2.png");
 const CatImg10 = require("./ShopByCategories/Prawn_1.png");
-const Banner1 = require("./Carousel/Banner.jpeg");
-const Banner2 = require("./Carousel/Banner2.png");
+// const Banner1 = require("./Carousel/Banner.jpeg");
+// const Banner2 = require("./Carousel/Banner2.png");
 const trend1 = require("./Trends/trend1.png");
 const trend2 = require("./Trends/trend2.png");
 const trend3 = require("./Trends/trend3.png");
@@ -53,6 +53,13 @@ const fssai_2 = require("./ProductDetails/fssai_2.png");
 const haccp = require("./ProductDetails/haccp.png");
 const iso = require("./ProductDetails/iso.png");
 
+const Banner1 = require("./Carousel/BannerImg1.png")
+const Banner2 = require("./Carousel/BannerImg2.png")
+const Banner3 = require("./Carousel/BannerImg3.png")
+const paymentIcon = require("./Payment/online_payment.png")
+
+
+
 
 export {
   fssai_2,
@@ -75,6 +82,7 @@ export {
   CatImg10,
   Banner1,
   Banner2,
+  Banner3,
   trend1,
   trend2,
   trend3,
@@ -103,5 +111,6 @@ export {
   map,
   email,
   phone,
-  fasil
+  fasil,
+  paymentIcon
 };

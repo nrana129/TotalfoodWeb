@@ -23,12 +23,13 @@ const tabsData = [
 
 const Tabs = () => {
   const [openTab, setOpenTab] = useState(null);
-  const [activeTabIndex, setActiveTabIndex] = useState(null);
+  const [activeTabIndex, setActiveTabIndex] = useState(null); // Track active tab
   const navigate = useNavigate();
 
   const handleToggle = (index) => {
+    // Toggle submenu visibility
     setOpenTab(openTab === index ? null : index);
-    setActiveTabIndex(index);
+    setActiveTabIndex(index); // Set the clicked tab as active
   };
 
   const handleActiveClick = (label, UrlPath) => {
@@ -76,6 +77,7 @@ const Tabs = () => {
                 e.preventDefault();
                 handleActiveClick(tab.label, tab.UrlPath); // For non-nested tabs
               }}
+              className={activeTabIndex === index ? styles.activeLink : ""}
             >
               {tab.label}
             </a>
