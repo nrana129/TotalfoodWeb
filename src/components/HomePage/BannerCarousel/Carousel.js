@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { ShimmerButton } from "react-shimmer-effects";
 import { getData } from "../../../utils/api";
+import { Banner1, Banner2, Banner3 } from "../../../assets/images";
+import "./Carousel.scss";
 
 const BannerCarousel = () => {
   const [bannerData, setBannerData] = useState([]);
@@ -31,19 +33,17 @@ const BannerCarousel = () => {
   };
 
   useEffect(() => {
-
     fetchCarouselData();
   }, []);
 
-  
   if (loading) {
-    return(
+    return (
       <div className="banner_loader">
         <ShimmerButton size="md" />
         <ShimmerButton size="md" />
         <ShimmerButton size="md" />
       </div>
-    ) // Show loading message while fetching data
+    ); // Show loading message while fetching data
   }
 
   if (error || !Array.isArray(bannerData) || bannerData.length === 0) {
@@ -64,7 +64,7 @@ const BannerCarousel = () => {
         navigation
         modules={[Navigation]}
       >
-        {bannerData.map((data) => (
+        {/* {bannerData.map((data) => (
           <SwiperSlide key={data.banner_id}>
             <img
               src={data.image}
@@ -73,7 +73,17 @@ const BannerCarousel = () => {
               height={300}
             />
           </SwiperSlide>
-        ))}
+        ))} */}
+
+        <SwiperSlide style={{ width: "1000px" }}>
+          <img src={Banner2} alt="Banner" />
+        </SwiperSlide>
+        <SwiperSlide style={{ width: "1000px" }}>
+          <img src={Banner3} alt="" />
+        </SwiperSlide>
+        <SwiperSlide style={{ width: "1000px" }}>
+          <img src={Banner1} alt="" />
+        </SwiperSlide>
       </Swiper>
     </div>
   );

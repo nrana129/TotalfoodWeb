@@ -1,0 +1,30 @@
+.sort_section {
+  position: relative;
+  font-size: 13px;
+  font-family: "Satoshi-Medium";
+  h2 {
+    width: max-content !important;
+    margin: 0 0 0 auto !important;
+    border: 1px solid #f6f6f6;
+    padding: 13px 20px;
+    border-radius: 13px;
+    background: #f6f6f6;
+    cursor: pointer;
+  }
+  .option_list {
+    position: absolute;
+    background: #fff;
+    top: 45px;
+    right: 0;
+    padding: 20px;
+    border: 1px solid #e3e3e3;
+    z-index: 991;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 25px;
+    border-radius: 15px;
+    box-shadow: 2px -1px 11px -3px #a7a7a7;
+    cursor: pointer;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TryMust } from "../../assets/images/index";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart); // Get cart data from Redux store
@@ -194,7 +195,7 @@ const Cart = () => {
       </div>
 
       <div className="pay_button">
-        <button>Pay ₹{totalPrice}</button>
+      <Link to="/payment">Pay ₹{totalPrice}</Link>
       </div>
     </div>
   );

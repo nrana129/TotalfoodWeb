@@ -3,6 +3,9 @@
   border: 1px solid #b2b2b4;
   border-radius: 20px;
   width: 290px;
+  height: max-content;
+  position: sticky;
+  top: 130px
 }
 
 .Tabs_section_list {
@@ -42,3 +45,5 @@
 .Tabs_section_list ul {
   padding-left: 20px;
 }
+
+

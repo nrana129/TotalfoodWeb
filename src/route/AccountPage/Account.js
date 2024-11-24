@@ -5,10 +5,12 @@ import "./Account.scss";
 
 const Account = () => {
   return (
-    <div className="container">
-      <div className="flex gap-10 my-10">
-        <Tabs />
-        <Overview />
+    <div className="account_main">
+      <div className="container">
+        <div className="flex gap-10">
+          <Tabs />
+          <Overview />
+        </div>
       </div>
     </div>
   );

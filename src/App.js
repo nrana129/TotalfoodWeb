@@ -23,6 +23,7 @@ import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./assets/css/theme.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PaymentPage from "./route/PaymentPage/PaymentPage";
 
 
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="available-coupon" element={<AvailableCoupon />} />
         <Route path="customer-support" element={<CustomerSupport />} />
         <Route path="refer-earn" element={<ReferEarn />} />
+        <Route path="payment" element={<PaymentPage />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
       <Footer />
