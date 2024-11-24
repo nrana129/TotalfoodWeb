@@ -227,7 +227,7 @@ cart.totalQuantity = updatedQuantity; // Update the total quantity in the cart o
               {QtycounterShow && (
                 <span className="Qtycounter">{Qtycounter}</span>
               )}
-              <span className="Qtycounter">{cart.totalQuantity}</span>
+              <span className="Qtycounter">{updatedQuantity}</span>
               <span onClick={handleToggleCart} className="cart_icon"></span>
               <div
                 className={`miniCartContent ${showCart ? "active" : ""}`}
